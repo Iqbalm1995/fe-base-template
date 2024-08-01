@@ -157,3 +157,36 @@ export const FooterAdmin = () => {
     </Box>
   );
 };
+
+export const FooterAdminAlternate = () => {
+  return (
+    <Box bg={"white"} color={"gray.900"} px={PaddingLanding} py={3}>
+      {/* <Container as={Stack} maxW={"6xl"} py={6}> */}
+      <Box>
+        <HStack spacing={6}>
+          <Box>
+            <Flex width={"60px"}>
+              <Image src={logoOjk} alt={"Bank bjb"} />
+            </Flex>
+          </Box>
+          <Box>
+            <Flex width={"60px"}>
+              <Image src={logoLps} alt={"Bank bjb"} />
+            </Flex>
+          </Box>
+          <Box>
+            <Text fontSize={"small"}>
+              bank bjb Berizin dan Diawasi oleh OJK | bank bjb merupakan peserta
+              penjamin LPS
+            </Text>
+          </Box>
+          <Spacer />
+          <Box>
+            <Text fontSize={"small"}>Copyright © 2024 bank bjb</Text>
+          </Box>
+        </HStack>
+      </Box>
+      {/* </Container> */}
+    </Box>
+  );
+};

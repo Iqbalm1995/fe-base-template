@@ -16,21 +16,53 @@ import {
   Switch,
   HStack,
   StackDivider,
+  Container,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Grid,
+  GridItem,
+  VStack,
+  Center,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+  InputGroup,
+  InputRightElement,
+  Spacer,
+  Image,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  ViewOffIcon,
+  ViewIcon,
 } from "@chakra-ui/icons";
 import { PaddingLanding } from "@/constants/MasterConstant";
 import { LogoApps } from "@/base_templates/components/LogoApps";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { FiLogIn } from "react-icons/fi";
+import Link from "next/link";
 
 export default function TopNavigationLanding() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box bgGradient={"linear(to-r, #1b517e, #063154)"}>
+    <Container
+      as={Stack}
+      maxW={"container.xl"}
+      bgGradient={"linear(to-r, #1b517e, #063154)"}
+    >
       <Flex
         // bg={useColorModeValue("white", "gray.800")}
         // bg={"red"}
@@ -39,7 +71,7 @@ export default function TopNavigationLanding() {
         minH={"60px"}
         py={{ base: 2 }}
         // px={{ base: 4 }}
-        px={PaddingLanding}
+        // px={PaddingLanding}
         // borderBottom={1}
         // borderStyle={"solid"}
         // borderColor={"rgba(27, 81, 126, 0.2)"}
@@ -76,16 +108,201 @@ export default function TopNavigationLanding() {
           spacing={6}
         >
           <LanguageSelector />
-          <Button colorScheme={"primary"}>Masuk</Button>
+          <AuthPanelModal />
         </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
-    </Box>
+    </Container>
   );
 }
+
+interface AuthCorporateUserModel {
+  username: string;
+  password: string;
+}
+
+const initialValueAuthEx: AuthCorporateUserModel = {
+  username: "",
+  password: "",
+};
+
+const FormSchema = Yup.object().shape({
+  username: Yup.string().required("Required"),
+  password: Yup.string().required("Required"),
+});
+
+const AuthPanelModal = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <>
+      <Button onClick={onOpen} colorScheme={"secondary"} boxShadow={"md"}>
+        Masuk
+      </Button>
+      <Modal isOpen={isOpen} onClose={onClose} size={"4xl"} isCentered>
+        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(5px)" />
+        <ModalContent rounded={"xl"} m={{ base: 3, sm: 3, md: 0, lg: 0 }}>
+          {/* <ModalHeader>Login Otentikasi</ModalHeader> */}
+          <ModalCloseButton />
+          <ModalBody p={0}>
+            <Grid templateColumns="repeat(2, 1fr)" gap={0} p={0} h={"65vh"}>
+              <GridItem
+                colSpan={{ base: 2, sm: 2, md: 1, lg: 1 }}
+                w={"full"}
+                h={"full"}
+                // bg="blue.500"
+                roundedLeft={"xl"}
+                display={{ base: "none", sm: "none", md: "flex", lg: "flex" }}
+              >
+                <Flex
+                  roundedLeft={"xl"}
+                  w={"full"}
+                  h={"full"}
+                  bgGradient={"linear(to-r, #1b517e, #063154)"}
+                  backgroundPosition="center"
+                  backgroundRepeat="no-repeat"
+                  backgroundSize="cover"
+                  backgroundImage={`url(./img/currency-bg.png)`}
+                  pos={"relative"}
+                  zIndex={1}
+                >
+                  <Box
+                    pos={"absolute"}
+                    top="0"
+                    left="0"
+                    w="full"
+                    h="full"
+                    bgGradient="linear(to-b, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.9) 100%)"
+                    // bg={"red"}
+                  ></Box>
+                </Flex>
+              </GridItem>
+              <GridItem
+                colSpan={{ base: 2, sm: 2, md: 1, lg: 1 }}
+                w={"full"}
+                h={"full"}
+                roundedRight={"xl"}
+              >
+                <Flex
+                  w={"full"}
+                  h={"full"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  p={10}
+                >
+                  <AuthForm />
+                </Flex>
+              </GridItem>
+            </Grid>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
+
+const AuthForm = () => {
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+  const router = useRouter();
+
+  const formik = useFormik({
+    initialValues: initialValueAuthEx,
+    validationSchema: FormSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit: (values) => {
+      console.log("Login");
+      console.log(values);
+      router.push("/home");
+    },
+  });
+  return (
+    <VStack width={"full"} spacing={3} align="stretch">
+      <Box>
+        <Center>
+          <Flex width={"80px"} py={2}>
+            <Image src={"./img/logo-bjb.png"} alt="Bank bjb" />
+          </Flex>
+        </Center>
+      </Box>
+      <Box>
+        <Text fontWeight={600} fontSize={"20px"}>
+          Selamat Datang
+        </Text>
+      </Box>
+      <Box>
+        <Text>Gunakan akun Portal bjb untuk masuk aplikasi.</Text>
+      </Box>
+      <Box>
+        {/* FORM AUTH */}
+        <form onSubmit={formik.handleSubmit}>
+          <VStack>
+            <FormControl
+              id="username"
+              isInvalid={formik.errors.username ? true : false}
+              isRequired
+            >
+              <FormLabel>Username</FormLabel>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.username}
+                placeholder="Isi Username..."
+              />
+              <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
+            </FormControl>
+            <FormControl
+              id="password"
+              isInvalid={formik.errors.password ? true : false}
+              isRequired
+            >
+              <FormLabel>Password</FormLabel>
+              <InputGroup size="md">
+                <Input
+                  id="password"
+                  name="password"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  pr="4.5rem"
+                  type={show ? "text" : "password"}
+                  placeholder="Isi Password..."
+                />
+                <InputRightElement width="4.5rem">
+                  <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    {show ? <ViewOffIcon /> : <ViewIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+            </FormControl>
+            <Button
+              rightIcon={<FiLogIn />}
+              colorScheme="bjb_color_theme"
+              variant={"solid"}
+              type={"submit"}
+              w={"full"}
+              mt={5}
+            >
+              Masuk
+            </Button>
+          </VStack>
+        </form>
+      </Box>
+      <Box>
+        <Flex>
+          <Spacer />
+          <Link href="#">Lupa password?</Link>
+        </Flex>
+      </Box>
+    </VStack>
+  );
+};
 
 export const LanguageSelector = () => {
   return (
@@ -276,21 +493,21 @@ const NAV_ITEMS: Array<NavItem> = [
   //   label: "Beranda",
   //   href: "/",
   // },
-  // {
-  //   label: "Produk",
-  //   children: [
-  //     {
-  //       label: "Sub menu 1",
-  //       subLabel: "Desc sub menu 1",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "Sub menu 2",
-  //       subLabel: "Desc sub menu 2",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
+  {
+    label: "Produk",
+    children: [
+      {
+        label: "Sub menu 1",
+        subLabel: "Desc sub menu 1",
+        href: "#",
+      },
+      {
+        label: "Sub menu 2",
+        subLabel: "Desc sub menu 2",
+        href: "#",
+      },
+    ],
+  },
   {
     label: "Tentang Kami",
     href: "#",

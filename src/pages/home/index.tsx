@@ -33,7 +33,6 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import LayoutAdmin from "@/components/LayoutAdminPage";
 import SignatureLineColor from "@/components/BottomLineSignature";
 import CaptionCarousel from "@/components/HeadSliders";
 import ProductsComponents from "@/components/ProductComponents";
@@ -46,6 +45,7 @@ import { mainColor } from "@/constants/MasterConstant";
 import { MdCheckCircle } from "react-icons/md";
 import Link from "next/link";
 import TopHeadWebMenu from "@/components/TopHeadWebMenu";
+import LayoutAdmin from "@/base_templates/layout/admin/LayoutAdmin";
 
 const HomeAdmin = () => {
   return (
@@ -54,52 +54,6 @@ const HomeAdmin = () => {
         <Box mx={"auto"} bgColor={"gray.100"}>
           <Container maxW={"8xl"} px={12} pb={12} pt={2}>
             <VStack spacing={2} alignItems={"start"} w={"full"}>
-              {/* <Box pt={2} w={"full"}>
-                <ProfileHead />
-              </Box> */}
-              {/* <Box w={"full"}>
-                <Grid templateColumns="repeat(12, 1fr)" gap={4} w={"full"}>
-                  <GridItem colSpan={{ base: 12, md: 3 }}>
-                    <Flex
-                      pos={"relative"}
-                      w={"full"}
-                      h={"80px"}
-                      backgroundPosition="center"
-                      backgroundRepeat="no-repeat"
-                      backgroundSize="cover"
-                      backgroundImage={`url(./img/business/corp-assets-005.jpg)`}
-                      rounded={"xl"}
-                      boxShadow={"md"}
-                      p={4}
-                    >
-                      <Flex
-                        pos={"absolute"}
-                        top="0"
-                        left="0"
-                        w="full"
-                        h="full"
-                        rounded={"xl"}
-                        bgGradient="linear(to-b, rgba(20, 20, 20, 0.4) 0%, rgba(20, 20, 20, 1) 100%)"
-                        color={"white"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                      >
-                        <VStack spacing={0}>
-                          <Box>
-                            <Text fontSize="lg" fontWeight={600}>
-                              Monthly Transaction
-                            </Text>
-                          </Box>
-                          <Box>
-                            <Text fontWeight={600}>Rp 1.500.000.000</Text>
-                          </Box>
-                        </VStack>
-                      </Flex>
-                    </Flex>
-                  </GridItem>
-                </Grid>
-              </Box> */}
-
               <AppDrawBeta />
 
               <Box py={4} mt={"40px"}>
@@ -309,52 +263,6 @@ const AppDrawBeta = () => {
           </Grid>
         </Box>
       </GridItem>
-      {/* <GridItem colSpan={{ base: 12, md: 3 }}>
-        <Box p={2}>
-          <Stack spacing={5}>
-            <Accordion defaultIndex={[0]} allowMultiple>
-              <AccordionItem>
-                <AccordionButton>
-                  <Text
-                    textAlign="left"
-                    fontWeight={600}
-                    fontSize={"sm"}
-                    color={mainColor}
-                  >
-                    Filter Apps
-                  </Text>
-                  <Spacer />
-                  <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel pb={4}>
-                  <List spacing={1} pl={2}>
-                    <ListItem>
-                      <Button variant="link" size={"sm"}>
-                        Favorites
-                      </Button>
-                    </ListItem>
-                    <ListItem>
-                      <Button variant="link" size={"sm"}>
-                        Active
-                      </Button>
-                    </ListItem>
-                    <ListItem>
-                      <Button variant="link" size={"sm"}>
-                        Not Signed
-                      </Button>
-                    </ListItem>
-                    <ListItem>
-                      <Button variant="link" size={"sm"}>
-                        InActive
-                      </Button>
-                    </ListItem>
-                  </List>
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
-          </Stack>
-        </Box>
-      </GridItem> */}
       <GridItem colSpan={{ base: 12, md: 12 }}>
         <Box w={"full"}>
           <>
@@ -680,7 +588,7 @@ const AppsDrawSquareV2 = ({ data }: { data: AppsData }) => {
       bg={"white"}
       rounded="2xl"
       border="2px solid transparent" // Ensure the border is initially transparent
-      transition="border-color 0.3s ease-in-out, background 0.3s ease-in-out" // Transition properties
+      // transition="border-color 0.3s ease-in-out, background 0.3s ease-in-out" // Transition properties
       _hover={
         data.isActive
           ? {
@@ -701,6 +609,8 @@ const AppsDrawSquareV2 = ({ data }: { data: AppsData }) => {
             }
           : {}
       }
+      transition="transform 0.3s ease-in-out"
+      transform={isHovered ? "translateY(-10px)" : "translateY(0)"}
       justifyContent={"center"}
       alignItems={"center"}
       h={"220px"}
@@ -713,6 +623,7 @@ const AppsDrawSquareV2 = ({ data }: { data: AppsData }) => {
           h={"80px"}
           filter={data.isActive ? "grayscale(0%)" : "grayscale(100%)"}
           draggable={false} // Prevent image from being draggable
+          boxShadow={"lg"}
         />
         <Flex w={"100px"} minH={"70px"} p={2} justifyContent={"center"}>
           <Text
@@ -720,7 +631,7 @@ const AppsDrawSquareV2 = ({ data }: { data: AppsData }) => {
             textAlign="center"
             fontWeight={500}
             color={"gray.600"}
-            textShadow="2px 2px 4px rgba(0, 0, 0, 0.3)"
+            // textShadow="2px 2px 4px rgba(0, 0, 0, 0.3)"
             userSelect="none" // Prevent text from being selectable
           >
             {truncateText(data.nameApps, isHovered ? 100 : 20)}
