@@ -46,19 +46,24 @@ import { MdCheckCircle } from "react-icons/md";
 import Link from "next/link";
 import TopHeadWebMenu from "@/components/TopHeadWebMenu";
 import LayoutAdmin from "@/base_templates/layout/admin/LayoutAdmin";
+import BreadcrumbAdmin, {
+  AdminTittleBreadcrumb,
+} from "@/base_templates/layout/admin/BreadcrumbAdmin";
+
+const HeadPageName: AdminTittleBreadcrumb = {
+  titlePage: "Home",
+  breadCrumbPath: ["Admin", "Home"],
+};
 
 const HomeAdmin = () => {
   return (
     <>
       <LayoutAdmin>
         <Box mx={"auto"} bgColor={"gray.100"}>
-          <Container maxW={"8xl"} px={12} pb={12} pt={2}>
-            <VStack spacing={2} alignItems={"start"} w={"full"}>
+          <Container maxW={"8xl"} px={12} pb={12} pt={2} minH={"100vh"}>
+            <BreadcrumbAdmin HeadData={HeadPageName} />
+            <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
               <AppDrawBeta />
-
-              <Box py={4} mt={"40px"}>
-                {/* Produts */}
-              </Box>
             </VStack>
           </Container>
         </Box>

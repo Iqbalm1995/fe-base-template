@@ -55,6 +55,8 @@ import {
   FiUsers,
   FiUser,
   FiHeart,
+  FiPenTool,
+  FiBox,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
@@ -112,6 +114,47 @@ const LinkItems: LinkItemProps[] = [
     role: ["admin"],
     menuID: "1",
     children: [],
+  },
+  {
+    name: "Template",
+    icon: FiPenTool,
+    link: "#",
+    role: ["admin"],
+    menuID: "2",
+    children: [
+      {
+        name: "Color Palette",
+        icon: FiBox,
+        link: "/template/color-palette",
+        role: ["admin"],
+        menuID: "2-1",
+        children: [],
+      },
+      {
+        name: "Tables",
+        icon: FiBox,
+        link: "/template/tables",
+        role: ["admin"],
+        menuID: "2-2",
+        children: [],
+      },
+      {
+        name: "Button",
+        icon: FiBox,
+        link: "/template/buttons",
+        role: ["admin"],
+        menuID: "2-2",
+        children: [],
+      },
+      {
+        name: "Card",
+        icon: FiBox,
+        link: "/template/cards",
+        role: ["admin"],
+        menuID: "2-2",
+        children: [],
+      },
+    ],
   },
   {
     name: "Produk",
@@ -482,140 +525,6 @@ const NavItem = ({ data, mode }: { data: LinkItemProps; mode: boolean }) => {
         </MotionBox>
       )}
     </Box>
-  );
-};
-
-interface MobileProps extends FlexProps {
-  onOpen: () => void;
-}
-
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const [LiteMode, setLiteMode] = useState<boolean>(false);
-
-  useEffect(() => {
-    // Retrieve the value from local storage when the component mounts
-    const savedLiteMode = getFromLocalStorage("LiteMode");
-    if (savedLiteMode !== null) {
-      setLiteMode(savedLiteMode);
-    }
-  }, []);
-
-  const toggleLiteMode = () => {
-    const newValue = !LiteMode;
-    setLiteMode(newValue);
-    saveToLocalStorage("LiteMode", newValue);
-  };
-
-  return (
-    <Flex
-      ml={{ base: 0, md: LiteMode ? "95px" : 60 }}
-      px={{ base: 4, md: 4 }}
-      height="20"
-      alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "flex-end" }}
-      {...rest}
-    >
-      <IconButton
-        display={{ base: "flex", md: "none" }}
-        onClick={onOpen}
-        variant="outline"
-        aria-label="open menu"
-        icon={<FiMenu />}
-      />
-
-      <IconButton
-        display={{ base: "none", md: "flex" }}
-        onClick={toggleLiteMode}
-        variant="solid"
-        colorScheme={"secondary"}
-        aria-label="lite mode"
-        icon={<FiMenu />}
-      />
-
-      <Box display={{ base: "flex", md: "none" }}>
-        <LogoApps />
-      </Box>
-
-      <HStack spacing={{ base: "2", md: "6" }}>
-        <Flex alignItems={"start"}>
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<FiBell />}
-              variant="ghost"
-              transition="all 0.3s"
-              _focus={{ boxShadow: "none" }}
-            />
-            <MenuList>
-              <MenuItem icon={<AddIcon />}>65 New Data</MenuItem>
-              <MenuItem icon={<InfoOutlineIcon />}>
-                10 Pending Approval
-              </MenuItem>
-              <MenuItem icon={<WarningTwoIcon />}>23 Inactive API</MenuItem>
-              <MenuDivider />
-              <MenuItem justifyContent="center">Show More</MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
-
-        <Flex alignItems={"center"}>
-          <Menu>
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: "none" }}
-            >
-              <HStack>
-                <Avatar size={"sm"} src={"./img/default-user-img.jpg"} mr="2" />
-                <VStack
-                  display={{ base: "none", md: "flex" }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                  mr="2"
-                >
-                  <Text fontSize="sm" fontWeight={600}>
-                    John Doe
-                  </Text>
-                  <HStack divider={<StackDivider borderColor="gray.200" />}>
-                    <Text fontSize="xs" color="gray.600">
-                      User8732569435
-                    </Text>
-                    <Text fontSize="xs" color="gray.600">
-                      Approver
-                    </Text>
-                  </HStack>
-                </VStack>
-                <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-            <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
-            >
-              {/* <MenuDivider /> */}
-              <Link href={"/"}>
-                <MenuItem
-                  _hover={{
-                    bg: "red.600",
-                    color: "white",
-                  }}
-                >
-                  Keluar
-                </MenuItem>
-              </Link>
-            </MenuList>
-          </Menu>
-        </Flex>
-      </HStack>
-    </Flex>
   );
 };
 
