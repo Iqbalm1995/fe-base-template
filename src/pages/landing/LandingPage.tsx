@@ -25,6 +25,9 @@ import {
 } from "@chakra-ui/icons";
 import Slider from "react-slick";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import ButtonSignatureIcon1, {
+  ButtonSignature1,
+} from "@/base_templates/components/SignatureComponents";
 
 const LandingPage = () => {
   return (
@@ -43,7 +46,7 @@ const HeadingContentLanding = () => {
     <>
       <Flex
         pos={"relative"}
-        h={{ base: "1830px", md: "155vh", lg: "960px" }} // Responsive heights for different screen sizes
+        h={{ base: "140vh", sm: "140vh", md: "120vh", lg: "110vh" }} // Responsive heights for different screen sizes
         w={"full"}
         bgGradient={"linear(to-r, #1b517e, #063154)"}
         backgroundPosition="center"
@@ -85,16 +88,22 @@ const HeadingContentLanding = () => {
                   <Flex
                     justifyContent={"start"}
                     alignItems={"center"}
-                    h={"full"}
+                    h={"70vh"}
                     color={"white"}
+                    // bg={"red"}
                   >
                     <VStack
-                      pt={{ base: 0, sm: 0, md: "150", lg: "150" }}
-                      spacing={10}
+                      pt={{
+                        base: "120px",
+                        sm: "120px",
+                        md: "150px",
+                        lg: "150px",
+                      }}
+                      spacing={8}
                     >
                       <Heading
                         as="h2"
-                        size="2xl"
+                        size="xl"
                         color={"white"}
                         lineHeight={"1.4"}
                         // bg={"blue"}
@@ -108,15 +117,6 @@ const HeadingContentLanding = () => {
                         kini lebih mudah diakses dengan Portal, meningkatkan
                         efisiensi dan fleksibilitas operasional.
                       </Text>
-                      <Flex
-                        w={{
-                          base: "320px",
-                          sm: "320px",
-                          md: "400px",
-                          lg: "full",
-                        }}
-                        h={"150px"}
-                      ></Flex>
                     </VStack>
                   </Flex>
                 </GridItem>
@@ -127,7 +127,6 @@ const HeadingContentLanding = () => {
                   <Flex
                     justifyContent={"center"}
                     h={"full"}
-                    pt={{ base: 0, sm: 0, md: "85", lg: "85" }}
                     // bg={"red"}
                   ></Flex>
                 </GridItem>
@@ -157,8 +156,10 @@ const StaticHighlightLanding = () => {
         // bgGradient={"linear(to-r, #1b517e, #063154)"}
         // color={useColorModeValue("white", "gray.200")}
         // px={PaddingLanding}
-        py={5}
+        px={{ base: 0, sm: 0, md: "50px" }}
+        // py={5}
         mb={{ base: 2, md: 5 }}
+        // bg={"red"}
       >
         <Grid
           templateColumns={{
@@ -209,7 +210,7 @@ const StaticDetail = ({ data }: { data: StatisticPercentageDetail }) => {
         p={5}
         rounded={"xl"}
       >
-        <Text fontSize={"5xl"} fontWeight={"bold"}>
+        <Text fontSize={"4xl"} fontWeight={"bold"}>
           {data.nominalStatic}
         </Text>
         <Box fontSize={"sm"}>{data.desc}</Box>
@@ -297,15 +298,18 @@ const MiddleContentLanding = () => {
           <GridItem w={"full"} colSpan={{ base: 12, sm: 12, md: 10, lg: 10 }}>
             <HStack>
               {dataTag.map((t, idx) => (
-                <Button
+                <ButtonSignature1
+                  textStr={t}
                   colorScheme={idx == 0 ? "secondary" : "secondary"}
+                  _hover={{
+                    bg: "yellow.400",
+                    color: "white",
+                  }}
                   variant={idx == 0 ? "solid" : "outline"}
                   size={"sm"}
                   key={idx}
                   px={5}
-                >
-                  {t}
-                </Button>
+                />
               ))}
             </HStack>
           </GridItem>
@@ -464,15 +468,18 @@ const MiddleContentLanding2 = () => {
           <GridItem w={"full"} colSpan={{ base: 12, sm: 12, md: 10, lg: 10 }}>
             <HStack>
               {dataTag.map((t, idx) => (
-                <Button
+                <ButtonSignature1
+                  textStr={t}
                   colorScheme={idx == 0 ? "secondary" : "secondary"}
+                  _hover={{
+                    bg: "yellow.400",
+                    color: "white",
+                  }}
                   variant={idx == 0 ? "solid" : "outline"}
                   size={"sm"}
                   key={idx}
                   px={5}
-                >
-                  {t}
-                </Button>
+                />
               ))}
             </HStack>
           </GridItem>
@@ -496,7 +503,7 @@ const MiddleContentLanding2 = () => {
           <GridItem w={"full"} colSpan={{ base: 12, sm: 12, md: 12, lg: 12 }}>
             <Box
               position={"relative"}
-              height={{ base: "180px", sm: "350px", md: "450px", lg: "550px" }}
+              height={{ base: "380px", sm: "380px", md: "450px", lg: "550px" }}
               width={"full"}
               overflow={"hidden"}
             >
@@ -512,8 +519,7 @@ const MiddleContentLanding2 = () => {
                 href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
               />
               {/* Left Icon */}
-              <IconButton
-                colorScheme={"secondary"}
+              <ButtonSignatureIcon1
                 aria-label="left-arrow"
                 variant="solid"
                 position="absolute"
@@ -522,13 +528,11 @@ const MiddleContentLanding2 = () => {
                 transform={"translate(0%, -50%)"}
                 zIndex={2}
                 onClick={() => slider?.slickPrev()}
-                display={{ base: "none", sm: "none", md: "block", lg: "block" }}
               >
                 <BiLeftArrowAlt size="40px" />
-              </IconButton>
+              </ButtonSignatureIcon1>
               {/* Right Icon */}
-              <IconButton
-                colorScheme={"secondary"}
+              <ButtonSignatureIcon1
                 aria-label="right-arrow"
                 variant="solid"
                 position="absolute"
@@ -537,10 +541,9 @@ const MiddleContentLanding2 = () => {
                 transform={"translate(0%, -50%)"}
                 zIndex={2}
                 onClick={() => slider?.slickNext()}
-                display={{ base: "none", sm: "none", md: "block", lg: "block" }}
               >
                 <BiRightArrowAlt size="40px" />
-              </IconButton>
+              </ButtonSignatureIcon1>
               {/* Slider */}
               <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {cards.map((card, index) => (
@@ -548,8 +551,8 @@ const MiddleContentLanding2 = () => {
                     key={index}
                     w={"full"}
                     height={{
-                      base: "180px",
-                      sm: "350px",
+                      base: "380px",
+                      sm: "380px",
                       md: "450px",
                       lg: "550px",
                     }}
@@ -717,7 +720,7 @@ const MiddleContentLanding3 = () => {
                   <Button
                     rightIcon={<ArrowForwardIcon />}
                     colorScheme={"secondary"}
-                    variant={"outline"}
+                    variant={"link"}
                     size={"lg"}
                     color={"white"}
                   >

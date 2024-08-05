@@ -57,7 +57,7 @@ import Link from "next/link";
 import { ButtonSignature1 } from "@/base_templates/components/SignatureComponents";
 import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
 
-export default function TopNavigationLanding() {
+export default function TopNavigationLandingAlt() {
   const { isOpen, onToggle } = useDisclosure();
   const [scrollY, setScrollY] = useState(0);
 
@@ -165,63 +165,6 @@ export default function TopNavigationLanding() {
     </Box>
   );
 }
-
-// export default function TopNavigationLanding() {
-//   const { isOpen, onToggle } = useDisclosure();
-
-//   return (
-//     <Container
-//       as={Stack}
-//       maxW={"container.xl"}
-//       bgGradient={"linear(to-r, #1b517e, #063154)"}
-//     >
-//       <Flex
-//         color={"white"}
-//         minH={"60px"}
-//         py={{ base: 2 }}
-//         align={"center"}
-//         pos={"relative"}
-//         zIndex={2}
-//       >
-//         <Flex
-//           flex={{ base: 1, md: "auto" }}
-//           ml={{ base: -2 }}
-//           display={{ base: "flex", md: "none" }}
-//         >
-//           <IconButton
-//             onClick={onToggle}
-//             icon={
-//               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-//             }
-//             variant={"ghost"}
-//             aria-label={"Toggle Navigation"}
-//             colorScheme={"white"}
-//           />
-//         </Flex>
-//         {/* Logo Apps */}
-//         <LogoApps />
-//         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "end" }} pr={5}>
-//           <Flex display={{ base: "none", md: "flex" }} ml={10}>
-//             <DesktopNav />
-//           </Flex>
-//         </Flex>
-//         <Stack
-//           flex={{ base: 1, md: 0 }}
-//           justify={"flex-end"}
-//           direction={"row"}
-//           spacing={6}
-//         >
-//           <LanguageSelector />
-//           <AuthPanelModal />
-//         </Stack>
-//       </Flex>
-
-//       <Collapse in={isOpen} animateOpacity>
-//         <MobileNav />
-//       </Collapse>
-//     </Container>
-//   );
-// }
 
 interface AuthCorporateUserModel {
   username: string;

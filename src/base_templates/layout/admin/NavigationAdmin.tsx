@@ -295,7 +295,10 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
             </Box>
 
             <Box display={{ base: "flex", md: "none" }}>
-              <LogoApps2 mode={LiteMode} />
+              {/* <LogoApps2 mode={LiteMode} /> */}
+              <Text fontWeight={600} fontSize={"xl"} letterSpacing={5}>
+                {LiteMode ? "A" : "APPS"}
+              </Text>
             </Box>
 
             <HStack spacing={{ base: "2", md: "6" }}>
@@ -422,7 +425,10 @@ const SidebarContent = ({
         justifyContent="space-between"
         pl="2"
       >
-        <LogoApps2 mode={LiteModeTrigger} />
+        {/* <LogoApps2 mode={LiteModeTrigger} /> */}
+        <Text fontWeight={600} fontSize={"xl"} letterSpacing={5}>
+          {LiteModeTrigger ? "A" : "APPS"}
+        </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
 

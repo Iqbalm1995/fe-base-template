@@ -1,15 +1,14 @@
 import { ReactNode } from "react";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import { BottomLineSignature } from "@/base_templates/components/BottomLineSignature";
-import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
-import TopNavigationLanding from "./TopNavigationLanding";
+import TopNavigationLandingAlt from "./TopNavigationLandingAlt";
 
-const LayoutLanding = ({ children }: { children: ReactNode }) => {
+const LayoutLandingAlt = ({ children }: { children: ReactNode }) => {
   return (
     <>
       {/* <TopNewsHeadine /> */}
       <Box minH="100vh" bg={useColorModeValue("white", "gray.900")}>
-        <TopNavigationLanding />
+        <TopNavigationLandingAlt />
         {children}
       </Box>
       <BottomLineSignature />
@@ -17,4 +16,4 @@ const LayoutLanding = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default LayoutLanding;
+export default LayoutLandingAlt;

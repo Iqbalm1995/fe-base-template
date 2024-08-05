@@ -17,7 +17,7 @@ function ControlTableSM({ table }: any) {
               onClick={() => table.setPageIndex(0)}
               isDisabled={!table.getCanPreviousPage()}
               size="sm"
-              colorScheme="bjb_color_theme"
+              colorScheme="secondary"
               width={"100%"}
             ></Button>
           </GridItem>
@@ -27,7 +27,7 @@ function ControlTableSM({ table }: any) {
               onClick={() => table.previousPage()}
               isDisabled={!table.getCanPreviousPage()}
               size="sm"
-              colorScheme="bjb_color_theme"
+              colorScheme="secondary"
               width={"100%"}
             ></Button>
           </GridItem>
@@ -43,7 +43,7 @@ function ControlTableSM({ table }: any) {
               onClick={() => table.nextPage()}
               isDisabled={!table.getCanNextPage()}
               size="sm"
-              colorScheme="bjb_color_theme"
+              colorScheme="secondary"
               width={"100%"}
             ></Button>
           </GridItem>
@@ -53,7 +53,7 @@ function ControlTableSM({ table }: any) {
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               isDisabled={!table.getCanNextPage()}
               size="sm"
-              colorScheme="bjb_color_theme"
+              colorScheme="secondary"
               width={"100%"}
             ></Button>
           </GridItem>

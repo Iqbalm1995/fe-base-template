@@ -60,7 +60,7 @@ const TopNewsHeadine = () => {
     <Flex
       // minWidth="max-content"
       // bg={"#1b517e"}
-      bgGradient={"linear(to-r, #0078ff, #edc817)"}
+      bgGradient={"linear(to-r, secondary.400, secondary.800)"}
       color={"white"}
       gap="2"
       px={8}
@@ -108,6 +108,10 @@ const TopNewsHeadine = () => {
               rightIcon={<ArrowForwardIcon />}
               size={{ base: "xs", md: "sm" }}
               colorScheme="blackAlpha"
+              _hover={{
+                bg: "yellow.400",
+                color: "white",
+              }}
               onClick={onOpen}
             >
               Selengkapnya
@@ -118,7 +122,7 @@ const TopNewsHeadine = () => {
       <Drawer placement={"right"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Informasi Portal</DrawerHeader>
+          <DrawerHeader>Papan Informasi</DrawerHeader>
           <DrawerBody>
             <VStack>
               {DataNews.map((data, index) => (
@@ -138,13 +142,17 @@ const BoxInformationData = ({ data }: { data: NewsInformationInterface }) => {
       <Flex
         p={4}
         rounded={"xl"}
-        bgGradient={"linear(to-b, gray.100, gray.300)"}
+        bgGradient={"linear(to-br, white, secondary.50)"}
         color={"gray.700"}
+        boxShadow={"md"}
       >
         <Stack alignItems={"start"} spacing={3}>
           <Heading color={"#1b517e"} as="h3" size="md">
             {data.title}
           </Heading>
+          <Text fontSize={"sm"} color={"gray.500"}>
+            Kamis, 17 Agustus 2024 19.45
+          </Text>
           <Box p={1}>
             <p>{data.desc}</p>
           </Box>
