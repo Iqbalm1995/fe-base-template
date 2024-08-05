@@ -157,7 +157,7 @@ const orange: { [key: number]: string } = {
 };
 
 const ColorPalettePage = () => {
-  const fixedH: string = "160px";
+  const fixedH: string = "full";
 
   const primaryArray: colorInterface[] = Object.keys(primary).map((key) => ({
     point: key,
@@ -244,7 +244,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {primaryArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                              key={idx}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -275,7 +280,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {secondaryArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -306,7 +316,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {grayArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -337,7 +352,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {yellowArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -368,7 +388,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {greenArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -399,7 +424,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {tealArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -430,7 +460,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {blueArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -461,7 +496,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {purpleArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -492,7 +532,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {pinkArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -523,7 +568,12 @@ const ColorPalettePage = () => {
                           pt={1}
                         >
                           {orangeArray.map((dt, idx) => (
-                            <GridItem w={"full"} h={"full"} key={idx}>
+                            <GridItem
+                              w={"full"}
+                              h={"full"}
+                              key={idx}
+                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                            >
                               <ColorBoxPalette data={dt} />
                             </GridItem>
                           ))}
@@ -557,11 +607,12 @@ const ColorBoxPalette = ({ data }: { data: colorInterface }) => {
         color={"white"}
         justifyContent={"center"}
         alignItems={"center"}
-      ></Flex>
-      <VStack spacing={0} gap={0}>
-        <Text fontWeight={600}>{data.point}</Text>
-        <Text fontWeight={300}>{data.codeHex}</Text>
-      </VStack>
+      >
+        <VStack spacing={0} gap={0} w={"full"} h={"full"}>
+          <Text fontWeight={600}>{data.point}</Text>
+          <Text fontWeight={300}>{data.codeHex}</Text>
+        </VStack>
+      </Flex>
     </>
   );
 };

@@ -89,6 +89,7 @@ import {
   saveToLocalStorage,
 } from "@/utils/localStorageUtils";
 import { RiMenu2Line } from "react-icons/ri";
+import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
 
 // Page Split
 // const ProfileModal = React.lazy(
@@ -274,6 +275,7 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
             borderBottomWidth="1px"
             borderBottomColor={useColorModeValue("gray.200", "gray.700")}
             justifyContent={{ base: "space-between", md: "flex-end" }}
+            // bgColor={"red"}
           >
             <IconButton
               display={{ base: "flex", md: "none" }}
@@ -390,7 +392,10 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
           transition="0.5s ease"
           ml={{ base: 0, md: LiteMode ? "95px" : 60 }}
         >
-          <Box minH={"100vh"}>{children}</Box>
+          <TopNewsHeadine />
+          <Box minH={"100vh"} pt={2}>
+            {children}
+          </Box>
         </Box>
       </Box>
     </>
@@ -482,7 +487,7 @@ const NavItem = ({ data, mode }: { data: LinkItemProps; mode: boolean }) => {
             w={"full"}
             h={"full"}
             alignItems={"center"}
-            transition="transform 0.3s ease-in-out"
+            transition={"all .25s ease-in-out"}
             transform={
               isHovered && !mode ? "translateX(10px)" : "translateY(0)"
             }
