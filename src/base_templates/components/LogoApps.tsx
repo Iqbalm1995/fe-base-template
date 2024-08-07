@@ -1,4 +1,37 @@
-import { Flex, Text, Image, HStack } from "@chakra-ui/react";
+import { Flex, Text, Image, HStack, StackDivider } from "@chakra-ui/react";
+import Link from "next/link";
+
+export const LogoApplications = ({ colorText }: { colorText: string }) => {
+  return (
+    <>
+      <Link href={"/"}>
+        <HStack
+          divider={<StackDivider display={{ base: "none", md: "flex" }} />}
+          spacing={{ base: 0, md: 4 }}
+        >
+          <Image
+            w={{ base: "50px", sm: "50px", md: "60px", lg: "60px" }}
+            src={"./img/logo-bjb.png"}
+            display={{ base: "none", md: "flex" }}
+          ></Image>
+          <Text
+            fontWeight={600}
+            fontSize={"xl"}
+            letterSpacing={{
+              base: 1,
+              sm: 1,
+              md: 5,
+              lg: 5,
+            }}
+            color={colorText}
+          >
+            PORTAL
+          </Text>
+        </HStack>
+      </Link>
+    </>
+  );
+};
 
 export const LogoApps = () => {
   return (

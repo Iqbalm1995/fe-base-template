@@ -1,11 +1,12 @@
 import {
   HeadingGeneralComponents,
+  HeadingGeneralComponentsLite,
   HeadingGeneralInterface,
 } from "@/base_templates/components/HeadingGeneralComponents";
 import HeadTittleWeb from "@/base_templates/components/HeadTittleWeb";
 import { BaseContentBody } from "@/base_templates/components/LayoutContentBody";
 import FooterLanding from "@/base_templates/layout/landing/FooterLanding";
-import LayoutLanding from "@/base_templates/layout/landing/LayoutLanding";
+import LayoutLandingAlt from "@/base_templates/layout/landing/LayoutLandingAlt";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -31,21 +32,21 @@ import Head from "next/head";
 import { ReactNode } from "react";
 
 const PageDescription: HeadingGeneralInterface = {
-  tittlePage: "Blank Page",
-  dataBreadcrumb: ["Home", "Blank Page"],
+  tittlePage: "Registrasi",
+  dataBreadcrumb: ["Home", "Registrasi"],
 };
 
-const BlankPage = () => {
+const RegistrationPage = () => {
   return (
-    <LayoutLanding>
+    <LayoutLandingAlt>
       <HeadTittleWeb tittlePage={PageDescription.tittlePage} />
-      <HeadingGeneralComponents data={PageDescription} />
-      <BaseContentBody tittleContent="Content Data">
+      <HeadingGeneralComponentsLite data={PageDescription} />
+      <BaseContentBody tittleContent="Form Registrasi">
         <Flex minH={500}></Flex>
       </BaseContentBody>
       <FooterLanding />
-    </LayoutLanding>
+    </LayoutLandingAlt>
   );
 };
 
-export default BlankPage;
+export default RegistrationPage;
