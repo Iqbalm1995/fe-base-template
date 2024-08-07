@@ -103,16 +103,16 @@ export const HeadingGeneralComponentsLite = ({
     <>
       <Flex
         pos={"relative"}
-        h={{ base: "35vh", sm: "35vh", md: "45vh", lg: "45vh" }} // Responsive heights for different screen sizes
+        h={{ base: "29vh", sm: "29vh", md: "20vh", lg: "20vh" }} // Responsive heights for different screen sizes
         w={"full"}
-        bgGradient={"linear(to-r, #1b517e, #063154)"}
+        bgGradient={"linear(to-r, secondary.800, secondary.400)"}
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
-        backgroundImage={`url(./img/bjb-head-image.jpg)`}
+        backgroundImage={`url(./img/placeholder-header.png)`}
         alignItems={"center"}
         justifyContent={"center"}
-        mt={"-60px"}
+        mt={2}
         zIndex={1}
       >
         <Box
@@ -121,16 +121,16 @@ export const HeadingGeneralComponentsLite = ({
           left="0"
           w="full"
           h="full"
-          bgGradient="linear(to-l, rgba(9, 27, 42, 0.4) 0%, rgba(9, 27, 42, 0.9) 90%)"
+          // bgGradient="linear(to-l, rgba(9, 27, 42, 0.4) 0%, rgba(9, 27, 42, 0.9) 100%)"
           // bg={"red"}
         >
           <Container as={Stack} maxW={"container.xl"}>
             <Flex
               justifyContent={"start"}
               alignItems={"end"}
-              h={{ base: "35vh", sm: "35vh", md: "45vh", lg: "45vh" }}
+              h={{ base: "29vh", sm: "29vh", md: "20vh", lg: "20vh" }}
               color={"white"}
-              pb={7}
+              pb={3}
             >
               <VStack justifyContent={"start"} w={"full"}>
                 <Heading
@@ -145,7 +145,7 @@ export const HeadingGeneralComponentsLite = ({
                 <Breadcrumb
                   w={"full"}
                   spacing="8px"
-                  separator={<ChevronRightIcon color="gray.500" />}
+                  separator={<ChevronRightIcon color="gray.200" />}
                 >
                   {data.dataBreadcrumb.map((dt, idx) => (
                     <BreadcrumbItem key={idx}>

@@ -258,7 +258,7 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
           onClose={onClose}
           returnFocusOnClose={false}
           onOverlayClick={onClose}
-          size="full"
+          size="md"
         >
           <DrawerContent>
             <SidebarContent onClose={onClose} LiteModeTrigger={false} />

@@ -140,8 +140,8 @@ const DesktopNav = () => {
     };
   }, []);
 
-  const linkColor = scrollY > 0 ? "secondary.900" : "white";
-  const linkHoverColor = scrollY > 0 ? "secondary.400" : "gray.200";
+  const linkColor = "secondary.900";
+  const linkHoverColor = "secondary.900";
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
