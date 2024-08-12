@@ -137,7 +137,7 @@ const HeadingContentLanding = () => {
                   colSpan={12}
                   // bg={"green"}
                 >
-                  <StaticHighlightLanding />
+                  {/* <StaticHighlightLanding /> */}
                 </GridItem>
               </Grid>
             </Container>
