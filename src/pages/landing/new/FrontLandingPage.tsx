@@ -61,19 +61,19 @@ const MidContentCardLanding = () => {
   const dataContent: cardLandingProps[] = [
     {
       label: "Digital Operating Capital",
-      imgUrl: "./img/business/new-business-images06.jpg",
+      imgUrl: "/img/business/new-business-images06.jpg",
     },
     {
       label: "Strategy Advisor Data-Driven",
-      imgUrl: "./img/business/new-business-images02.jpg",
+      imgUrl: "/img/business/new-business-images02.jpg",
     },
     {
       label: "Single SignOn Ecosystem",
-      imgUrl: "./img/business/new-business-images05.jpg",
+      imgUrl: "/img/business/new-business-images05.jpg",
     },
     {
       label: "Finance Manager Corporations",
-      imgUrl: "./img/business/new-business-images03.jpg",
+      imgUrl: "/img/business/new-business-images03.jpg",
     },
   ];
 
@@ -121,12 +121,12 @@ const MidContentCardLanding = () => {
 
 const BottomHighlightLanding = () => {
   const imageData: string[] = [
-    "./img/bjb/content-images-01.jpeg",
-    "./img/bjb/content-images-02.jpg",
-    "./img/bjb/content-images-03.jpg",
-    "./img/bjb/content-images-04.jpg",
-    "./img/bjb/content-images-05.jpg",
-    "./img/bjb/content-images-06.jpg",
+    "/img/bjb/content-images-01.jpeg",
+    "/img/bjb/content-images-02.jpg",
+    "/img/bjb/content-images-03.jpg",
+    "/img/bjb/content-images-04.jpg",
+    "/img/bjb/content-images-05.jpg",
+    "/img/bjb/content-images-06.jpg",
   ];
 
   const settings = {
@@ -172,19 +172,19 @@ interface MitraHighlight {
 const DataMitraHighlight: MitraHighlight[] = [
   {
     alt: "Mitra 1",
-    imgSrc: "./img/companies/Company-removebg-preview.png",
+    imgSrc: "/img/companies/Company-removebg-preview.png",
   },
   {
     alt: "Mitra 2",
-    imgSrc: "./img/companies/Company-removebg-preview.png",
+    imgSrc: "/img/companies/Company-removebg-preview.png",
   },
   {
     alt: "Mitra 3",
-    imgSrc: "./img/companies/Company-removebg-preview.png",
+    imgSrc: "/img/companies/Company-removebg-preview.png",
   },
   {
     alt: "Mitra 4",
-    imgSrc: "./img/companies/Company-removebg-preview.png",
+    imgSrc: "/img/companies/Company-removebg-preview.png",
   },
 ];
 
@@ -345,7 +345,7 @@ const AuthenticatnLanding = () => {
             <Box>
               <Center>
                 <Flex width={"80px"} py={2}>
-                  <Image src={"./img/logo-bjb.png"} alt="Bank bjb" />
+                  <Image src={"/img/logo-bjb.png"} alt="Bank bjb" />
                 </Flex>
               </Center>
             </Box>

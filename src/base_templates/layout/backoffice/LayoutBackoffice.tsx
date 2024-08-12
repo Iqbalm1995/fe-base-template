@@ -1,10 +1,10 @@
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import { ReactNode, useEffect, useState } from "react";
-import NavigationAdmin from "./NavigationAdmin";
 import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
 import LoadingOverlay2 from "../LoadingOverlay2";
+import NavigationBackoffice from "./NavigationBackoffice";
 
-const LayoutAdmin = ({ children }: { children: ReactNode }) => {
+const LayoutBackoffice = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,11 +17,11 @@ const LayoutAdmin = ({ children }: { children: ReactNode }) => {
     <>
       <LoadingOverlay2 isLoading={loading} />
       <Box minH="100vh" bg={"white"}>
-        <NavigationAdmin>{children}</NavigationAdmin>
+        <NavigationBackoffice>{children}</NavigationBackoffice>
         {/* Footer */}
       </Box>
     </>
   );
 };
 
-export default LayoutAdmin;
+export default LayoutBackoffice;

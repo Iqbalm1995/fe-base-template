@@ -25,7 +25,12 @@ export function ControlTable({ table }: any) {
               w={"full"}
               h={"full"}
               alignItems={"center"}
-              justifyContent={"start"}
+              justifyContent={{
+                base: "center",
+                sm: "center",
+                md: "start",
+                lg: "start",
+              }}
             >
               <Text fontWeight={600}>Halaman </Text>
               <Text> {table.getState().pagination.pageIndex + 1} </Text>/{" "}
@@ -40,14 +45,19 @@ export function ControlTable({ table }: any) {
               alignItems={"center"}
               justifyContent={"end"}
             >
-              <ButtonGroup size="md" isAttached variant="solid">
+              <ButtonGroup
+                size="md"
+                w={{ base: "full", sm: "full", md: "auto", lg: "auto" }}
+                isAttached
+                variant="solid"
+              >
                 <Button
                   onClick={() => table.setPageIndex(0)}
                   isDisabled={!table.getCanPreviousPage()}
                   colorScheme={"secondary"}
                   variant={"solid"}
                   width={"full"}
-                  minW={"80px"}
+                  minW={{ base: 0, sm: 0, md: "80px", lg: "80px" }}
                 >
                   <BsChevronBarLeft />
                 </Button>
@@ -57,7 +67,7 @@ export function ControlTable({ table }: any) {
                   colorScheme={"secondary"}
                   variant={"solid"}
                   width={"full"}
-                  minW={"80px"}
+                  minW={{ base: 0, sm: 0, md: "80px", lg: "80px" }}
                 >
                   <BsChevronLeft />
                 </Button>
@@ -68,7 +78,7 @@ export function ControlTable({ table }: any) {
                   colorScheme={"secondary"}
                   variant={"solid"}
                   width={"full"}
-                  minW={"80px"}
+                  minW={{ base: 0, sm: 0, md: "80px", lg: "80px" }}
                 >
                   <BsChevronRight />
                 </Button>
@@ -79,7 +89,7 @@ export function ControlTable({ table }: any) {
                   colorScheme={"secondary"}
                   variant={"solid"}
                   width={"full"}
-                  minW={"80px"}
+                  minW={{ base: 0, sm: 0, md: "80px", lg: "80px" }}
                 >
                   <BsChevronBarRight />
                 </Button>
@@ -95,17 +105,32 @@ export function ControlTable({ table }: any) {
 export function TableInputShowPage({ table }: any) {
   return (
     <GridItem colSpan={{ base: 12, sm: 12, md: 12, lg: 6 }}>
-      <Flex justifyContent="flex-end" gap="2">
-        <span>Menampilkan : </span>
+      <Flex
+        justifyContent={{
+          base: "center",
+          sm: "center",
+          md: "flex-end",
+          lg: "flex-end",
+        }}
+        gap="2"
+        alignItems={"center"}
+      >
+        <span>Tampil </span>
         <Select
           size="sm"
-          w="80px"
+          w={{
+            base: "full",
+            sm: "full",
+            md: "80px",
+            lg: "80px",
+          }}
+          rounded={"md"}
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
           }}
         >
-          {[10, 20, 30, 40, 50].map((pageSize) => (
+          {[5, 10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               {pageSize}
             </option>

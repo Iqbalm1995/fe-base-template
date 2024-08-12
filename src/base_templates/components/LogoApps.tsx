@@ -1,5 +1,6 @@
 import { Flex, Text, Image, HStack, StackDivider } from "@chakra-ui/react";
 import Link from "next/link";
+import LogoBjb from "../../../publi/img/logo-bjb.png";
 
 export const LogoApplications = ({ colorText }: { colorText: string }) => {
   return (
@@ -11,7 +12,7 @@ export const LogoApplications = ({ colorText }: { colorText: string }) => {
         >
           <Image
             w={{ base: "50px", sm: "50px", md: "60px", lg: "60px" }}
-            src={"./img/logo-bjb.png"}
+            src={"/img/logo-bjb.png"}
             display={{ base: "none", md: "flex" }}
           ></Image>
           <Text
@@ -32,12 +33,55 @@ export const LogoApplications = ({ colorText }: { colorText: string }) => {
     </>
   );
 };
+export const LogoApplicationsLite = ({ colorText }: { colorText: string }) => {
+  return (
+    <>
+      <Link href={"/"}>
+        <Image
+          w={{ base: "50px", sm: "50px", md: "60px", lg: "60px" }}
+          src={"/img/logo-bjb.png"}
+          display={{ base: "none", md: "flex" }}
+        ></Image>
+      </Link>
+    </>
+  );
+};
+export const LogoApplicationsBackOffice = ({
+  colorText,
+}: {
+  colorText: string;
+}) => {
+  return (
+    <>
+      <Link href={"/"}>
+        <HStack
+          divider={<StackDivider display={{ base: "none", md: "flex" }} />}
+          spacing={{ base: 0, md: 2 }}
+        >
+          <Image
+            w={{ base: "50px", sm: "50px", md: "60px", lg: "60px" }}
+            src={"/img/logo-bjb.png"}
+            display={{ base: "none", md: "flex" }}
+          ></Image>
+          <Text
+            fontWeight={600}
+            fontSize={"xl"}
+            letterSpacing={0}
+            color={colorText}
+          >
+            BACKOFFICE
+          </Text>
+        </HStack>
+      </Link>
+    </>
+  );
+};
 
 export const LogoApps = () => {
   return (
     <>
       {/* <Flex width={"70px"} ml={5}>
-        <Image src={"./img/logo-bjb.png"} alt="Bank bjb" />
+        <Image src={"/img/logo-bjb.png"} alt="Bank bjb" />
       </Flex> */}
       {/* <Text fontWeight={600} fontSize={"18px"} pl={3}>
         PORTAL

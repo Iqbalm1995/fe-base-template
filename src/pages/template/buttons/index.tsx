@@ -14,16 +14,12 @@ const ButtonsPage = () => {
   return (
     <>
       <LayoutAdmin>
-        <Box mx={"auto"} bgColor={"gray.100"}>
-          <Container maxW={"8xl"} px={12} pb={12} pt={2} minH={"100vh"}>
-            <BreadcrumbAdmin HeadData={HeadPageName} />
-            <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
-              <Card w={"full"} minH={"100vh"}>
-                <CardBody p={10}></CardBody>
-              </Card>
-            </VStack>
-          </Container>
-        </Box>
+        <BreadcrumbAdmin HeadData={HeadPageName} />
+        <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
+          <Card w={"full"} minH={"100vh"}>
+            <CardBody p={10}></CardBody>
+          </Card>
+        </VStack>
       </LayoutAdmin>
     </>
   );

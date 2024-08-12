@@ -11,7 +11,6 @@ export default function Home() {
   return (
     // <Suspense fallback={<div>Mohon tunggu...</div>}>
     <>
-      <HeadTittleWeb tittlePage={""} />
       <LandingPage />
     </>
     // </Suspense>

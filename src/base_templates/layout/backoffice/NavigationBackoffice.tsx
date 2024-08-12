@@ -83,6 +83,7 @@ import { GrTransaction } from "react-icons/gr";
 import { BottomLineSignature } from "@/base_templates/components/BottomLineSignature";
 import {
   LogoApplications,
+  LogoApplicationsBackOffice,
   LogoApplicationsLite,
   LogoApps,
   LogoApps2,
@@ -231,7 +232,11 @@ const LinkItems: LinkItemProps[] = [
   },
 ];
 
-export default function NavigationAdmin({ children }: { children: ReactNode }) {
+export default function NavigationBackoffice({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [LiteMode, setLiteMode] = useState<boolean>(false);
@@ -279,15 +284,17 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
             height="20"
             alignItems="center"
             bg={useColorModeValue("white", "gray.900")}
-            borderBottomWidth="1px"
-            borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+            // borderBottomWidth="1px"
+            // borderBottomColor={useColorModeValue("gray.200", "gray.700")}
             justifyContent={{ base: "space-between", md: "flex-end" }}
             backgroundPosition="left"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
-            // bgGradient={"linear(to-r, white, red.900)"}
+            bgGradient={"linear(to-r, secondary.800, secondary.600)"}
+            color={"white"}
             // backgroundImage={`url(./img/agustus-navbar-bg-2.png)`}
             // bgColor={"red"}
+            boxShadow={"md"}
           >
             <IconButton
               display={{ base: "flex", md: "none" }}
@@ -300,32 +307,38 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
             <Box display={{ base: "none", md: "flex" }} w={"full"}>
               <IconButton
                 onClick={toggleLiteMode}
-                variant="ghost"
-                // colorScheme={"secondary"}
+                variant="solid"
+                colorScheme={"whiteAlpha"}
                 aria-label="lite mode"
                 icon={<RiMenu2Line />}
                 size={"lg"}
+                // rounded={"xl"}
               />
             </Box>
 
-            <Box display={{ base: "flex", md: "none" }}>
+            <Flex
+              display={{ base: "flex", md: "none" }}
+              justifyContent={"center"}
+              w={"full"}
+            >
               {LiteMode ? (
                 <LogoApplicationsLite colorText="secondary.500" />
               ) : (
-                <LogoApplications colorText="secondary.500" />
+                <LogoApplicationsBackOffice colorText="secondary.800" />
               )}
-            </Box>
+            </Flex>
 
-            <HStack spacing={{ base: "2", md: "6" }}>
+            <HStack spacing={{ base: "2", md: "6" }} color={"gray.900"}>
               <Flex alignItems={"start"}>
                 <Menu>
                   <MenuButton
                     as={IconButton}
                     aria-label="Options"
                     icon={<FiBell />}
-                    variant="ghost"
+                    variant="solid"
                     transition="all 0.3s"
                     _focus={{ boxShadow: "none" }}
+                    colorScheme={"whiteAlpha"}
                   />
                   <MenuList>
                     <MenuItem icon={<AddIcon />}>65 New Data</MenuItem>
@@ -361,21 +374,24 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
                         ml="2"
                         mr="2"
                       >
-                        <Text fontSize="sm" fontWeight={600}>
+                        <Text fontSize="sm" fontWeight={600} color="gray.50">
                           John Doe
                         </Text>
                         <HStack
                           divider={<StackDivider borderColor="gray.200" />}
                         >
-                          <Text fontSize="xs" color="gray.600">
+                          <Text fontSize="xs" color="gray.100">
                             User8732569435
                           </Text>
-                          <Text fontSize="xs" color="gray.600">
+                          <Text fontSize="xs" color="gray.100">
                             Approver
                           </Text>
                         </HStack>
                       </VStack>
-                      <Box display={{ base: "none", md: "flex" }}>
+                      <Box
+                        display={{ base: "none", md: "flex" }}
+                        color="gray.100"
+                      >
                         <FiChevronDown />
                       </Box>
                     </HStack>
@@ -405,7 +421,6 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
           transition="0.5s ease"
           ml={{ base: 0, md: LiteMode ? "95px" : 60 }}
         >
-          <TopNewsHeadine />
           <Box minH={"100vh"} pt={2}>
             <Box mx={"auto"} bgColor={"gray.100"}>
               <Container
@@ -447,11 +462,17 @@ const SidebarContent = ({
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="5" justifyContent="space-between">
+      <Flex
+        h="20"
+        alignItems="center"
+        // mx="5"
+        justifyContent={"center"}
+        w={"full"}
+      >
         {LiteModeTrigger ? (
           <LogoApplicationsLite colorText="secondary.500" />
         ) : (
-          <LogoApplications colorText="secondary.500" />
+          <LogoApplicationsBackOffice colorText="secondary.800" />
         )}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>

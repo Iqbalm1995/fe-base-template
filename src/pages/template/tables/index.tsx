@@ -142,23 +142,52 @@ const TablesPage = () => {
   return (
     <>
       <LayoutAdmin>
-        <Box mx={"auto"} bgColor={"gray.100"}>
-          <Container maxW={"8xl"} px={12} pb={12} pt={2} minH={"100vh"}>
-            <BreadcrumbAdmin HeadData={HeadPageName} />
-            <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
-              <Card w={"full"} minH={"100vh"}>
-                <CardBody p={10}>
+        <BreadcrumbAdmin HeadData={HeadPageName} />
+        <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
+          <Card w={"full"} minH={"100vh"}>
+            <CardBody p={5}>
+              <Grid templateColumns="repeat(12, 1fr)" gap={4}>
+                <GridItem colSpan={12}>
+                  <Flex justifyContent={"end"} w={"full"}>
+                    <HStack
+                      w={{
+                        base: "full",
+                        sm: "full",
+                        md: "auto",
+                        lg: "auto",
+                      }}
+                    >
+                      <Button
+                        colorScheme="secondary"
+                        leftIcon={<AddIcon />}
+                        variant="solid"
+                        w={{
+                          base: "full",
+                          sm: "full",
+                          md: "auto",
+                          lg: "auto",
+                        }}
+                      >
+                        Tambah
+                      </Button>
+                      <Button colorScheme="gray" variant={"outline"}>
+                        <RepeatIcon />
+                      </Button>
+                    </HStack>
+                  </Flex>
+                </GridItem>
+                <GridItem colSpan={12}>
                   <TableData
                     {...{
                       data,
                       columns,
                     }}
                   />
-                </CardBody>
-              </Card>
-            </VStack>
-          </Container>
-        </Box>
+                </GridItem>
+              </Grid>
+            </CardBody>
+          </Card>
+        </VStack>
       </LayoutAdmin>
     </>
   );
@@ -184,109 +213,99 @@ function TableData({
 
   return (
     <>
-      <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-        <GridItem colSpan={12}>
-          <Flex>
-            <Spacer />
-            <HStack>
-              <Button
-                colorScheme="secondary"
-                leftIcon={<AddIcon />}
-                variant="solid"
-              >
-                Tambah
-              </Button>
-              <Button colorScheme="gray" variant={"outline"}>
-                <RepeatIcon />
-              </Button>
-            </HStack>
-          </Flex>
-        </GridItem>
-        <GridItem colSpan={12}>
-          <Box pt={5}>
-            <Box p="2" mt={4}>
-              <Grid
-                templateColumns="repeat(12, 1fr)"
-                minWidth="max-content"
+      <Box pt={5}>
+        <Box p="2" mt={4}>
+          <Grid
+            templateColumns="repeat(12, 1fr)"
+            minWidth="max-content"
+            gap="2"
+            mb="2%"
+          >
+            <GridItem colSpan={{ base: 12, sm: 12, md: 12, lg: 6 }}>
+              <Flex
+                justifyContent={{
+                  base: "center",
+                  sm: "center",
+                  md: "flex-start",
+                  lg: "flex-start",
+                }}
                 gap="2"
-                mb="2%"
               >
-                <GridItem colSpan={{ base: 12, sm: 12, md: 12, lg: 6 }}>
-                  <Flex justifyContent="flex-start" gap="2">
-                    <span>Pencarian : </span>
-                    <Input
-                      size="sm"
-                      type="text"
-                      width="200px"
-                      value={""}
-                      placeholder="Cari Data..."
-                    />
-                  </Flex>
-                </GridItem>
-                <TableInputShowPage table={table} />
-              </Grid>
-              <>
-                <div style={{ overflowX: "auto" }}>
-                  <Table variant="striped" colorScheme="gray">
-                    <Thead>
-                      {table.getHeaderGroups().map((headerGroup) => (
-                        <Tr key={headerGroup.id}>
-                          <Th>#</Th>
-                          {headerGroup.headers.map((header) => {
-                            return (
-                              <Th key={header.id} colSpan={header.colSpan}>
-                                {header.isPlaceholder ? null : (
-                                  <div>
-                                    {flexRender(
-                                      header.column.columnDef.header,
-                                      header.getContext()
-                                    )}
-                                  </div>
+                <Input
+                  rounded={"md"}
+                  size="sm"
+                  type="text"
+                  w={{
+                    base: "full",
+                    sm: "full",
+                    md: "200px",
+                    lg: "200px",
+                  }}
+                  value={""}
+                  placeholder="Cari Data..."
+                />
+              </Flex>
+            </GridItem>
+            <TableInputShowPage table={table} />
+          </Grid>
+          <>
+            <div style={{ overflowX: "auto" }}>
+              <Table variant="striped" borderWidth={"1px"} colorScheme="gray">
+                <Thead>
+                  {table.getHeaderGroups().map((headerGroup) => (
+                    <Tr key={headerGroup.id}>
+                      <Th>#</Th>
+                      {headerGroup.headers.map((header) => {
+                        return (
+                          <Th key={header.id} colSpan={header.colSpan}>
+                            {header.isPlaceholder ? null : (
+                              <div>
+                                {flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
                                 )}
-                              </Th>
+                              </div>
+                            )}
+                          </Th>
+                        );
+                      })}
+                    </Tr>
+                  ))}
+                </Thead>
+                <Tbody>
+                  {table.getRowModel().rows.length > 0 ? (
+                    table.getRowModel().rows.map((row, index) => {
+                      const startingNumber = index + 1;
+                      return (
+                        <Tr key={row.id}>
+                          <Td key={index}>{startingNumber}</Td>
+                          {row.getVisibleCells().map((cell) => {
+                            return (
+                              <Td key={cell.id}>
+                                {flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext()
+                                )}
+                              </Td>
                             );
                           })}
                         </Tr>
-                      ))}
-                    </Thead>
-                    <Tbody>
-                      {table.getRowModel().rows.length > 0 ? (
-                        table.getRowModel().rows.map((row, index) => {
-                          const startingNumber = index + 1;
-                          return (
-                            <Tr key={row.id}>
-                              <Td key={index}>{startingNumber}</Td>
-                              {row.getVisibleCells().map((cell) => {
-                                return (
-                                  <Td key={cell.id}>
-                                    {flexRender(
-                                      cell.column.columnDef.cell,
-                                      cell.getContext()
-                                    )}
-                                  </Td>
-                                );
-                              })}
-                            </Tr>
-                          );
-                        })
-                      ) : (
-                        <Tr>
-                          <Td colSpan={table.options.columns.length + 1}>
-                            <Flex justifyContent={"center"}>
-                              Belum ada data
-                            </Flex>
-                          </Td>
-                        </Tr>
-                      )}
-                    </Tbody>
-                  </Table>
-                </div>
-                <ControlTable table={table} />
-              </>
-            </Box>
-          </Box>
-        </GridItem>
-      </Grid>
+                      );
+                    })
+                  ) : (
+                    <Tr>
+                      <Td colSpan={table.options.columns.length + 1}>
+                        <Flex justifyContent={"center"}>Belum ada data</Flex>
+                      </Td>
+                    </Tr>
+                  )}
+                </Tbody>
+              </Table>
+            </div>
+            <ControlTable table={table} />
+          </>
+        </Box>
+      </Box>
     </>
   );
 }

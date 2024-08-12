@@ -168,7 +168,7 @@ const AuthForm = () => {
       <Box>
         <Center>
           <Flex width={"80px"} py={2}>
-            <Image src={"./img/logo-bjb.png"} alt="Bank bjb" />
+            <Image src={"/img/logo-bjb.png"} alt="Bank bjb" />
           </Flex>
         </Center>
       </Box>

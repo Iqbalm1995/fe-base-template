@@ -87,7 +87,7 @@ const NavbarAdminPanel = () => {
                 _focus={{ boxShadow: "none" }}
               >
                 <HStack>
-                  <Avatar size={"sm"} src={"./img/default-user-img.jpg"} />
+                  <Avatar size={"sm"} src={"/img/default-user-img.jpg"} />
                   <VStack
                     display={{ base: "none", md: "flex" }}
                     alignItems="flex-start"

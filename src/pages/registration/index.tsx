@@ -202,6 +202,18 @@ const FormWizard: React.FC = () => {
                             {"Message Error Here"}
                           </FormErrorMessage>
                         </FormControl>
+                        <FormControl isInvalid={false} isRequired>
+                          <FormLabel>Alamat</FormLabel>
+                          <Input
+                            id={"input2"}
+                            name={"input2"}
+                            type={"text"}
+                            placeholder="Alamat"
+                          />
+                          <FormErrorMessage>
+                            {"Message Error Here"}
+                          </FormErrorMessage>
+                        </FormControl>
                       </VStack>
                     </CardBody>
                   </Card>
@@ -210,20 +222,34 @@ const FormWizard: React.FC = () => {
 
               {/* NOTE TAB 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
               {currentTab === 2 && (
-                <div>
-                  <h2>Tab 2 Content</h2>
-                </div>
+                <>
+                  <Card
+                    w={{ base: "full", sm: "full", md: "80vh", lg: "80vh" }}
+                    boxShadow={"lg"}
+                  >
+                    <CardBody minH={"300px"}>
+                      <VStack spacing={4}></VStack>
+                    </CardBody>
+                  </Card>
+                </>
               )}
 
               {/* NOTE TAB 3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
               {currentTab === 3 && (
-                <div>
-                  <h2>Tab 3 Content</h2>
-                </div>
+                <>
+                  <Card
+                    w={{ base: "full", sm: "full", md: "80vh", lg: "80vh" }}
+                    boxShadow={"lg"}
+                  >
+                    <CardBody minH={"300px"}>
+                      <VStack spacing={4}></VStack>
+                    </CardBody>
+                  </Card>
+                </>
               )}
             </Flex>
             {/* Tab Navigation */}
-            <Flex w={"full"} justifyContent={"end"}>
+            <Flex w={"full"} pt={10} justifyContent={"end"}>
               <TabNavigation
                 currentTab={currentTab}
                 setCurrentTab={setCurrentTab}

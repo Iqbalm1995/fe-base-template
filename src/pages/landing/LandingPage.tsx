@@ -28,10 +28,12 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import ButtonSignatureIcon1, {
   ButtonSignature1,
 } from "@/base_templates/components/SignatureComponents";
+import HeadTittleWeb from "@/base_templates/components/HeadTittleWeb";
 
 const LandingPage = () => {
   return (
     <LayoutLanding>
+      <HeadTittleWeb tittlePage={""} />
       <HeadingContentLanding />
       <MiddleContentLanding />
       <MiddleContentLanding2 />
@@ -191,7 +193,7 @@ const StaticData: StatisticPercentageDetail[] = [
     desc: "Transaksi digital skala besar di Indonesia didukung oleh bank bjb, meningkatkan efisiensi dan kemudahan bagi pelaku bisnis.",
   },
   {
-    nominalStatic: "Rp 271T",
+    nominalStatic: "Rp 100T",
     desc: "Angka transaksi harian yang terjadi melalui bank bjb.",
   },
   {
@@ -277,23 +279,23 @@ const BaseBackgoundContentBodyLanding = ({
 const MiddleContentLanding = () => {
   const dataContent: cardLandingProps[] = [
     {
-      label: "Digital Operating Capital",
-      imgUrl: "./img/business/new-business-images06.jpg",
+      label: "IBC Registration",
+      imgUrl: "/img/business/new-business-images06.jpg",
     },
     {
-      label: "Strategy Advisor Data-Driven",
-      imgUrl: "./img/business/new-business-images02.jpg",
+      label: "Virtual Account Debit",
+      imgUrl: "/img/business/new-business-images02.jpg",
     },
     {
-      label: "Single SignOn Ecosystem",
-      imgUrl: "./img/business/new-business-images05.jpg",
+      label: "Bank Bjb | Digi SMB",
+      imgUrl: "/img/business/new-business-images05.jpg",
     },
   ];
 
-  const dataTag: string[] = ["All", "Event", "Product", "News"];
+  const dataTag: string[] = ["All", "Produk", "Penawaran", "Promo"];
   return (
     <>
-      <BaseContentBodyLanding tittleContent={"Content 1"}>
+      <BaseContentBodyLanding tittleContent={"Untuk Anda"}>
         <Grid templateColumns="repeat(12, 1fr)" w={"full"} gap={8}>
           <GridItem w={"full"} colSpan={{ base: 12, sm: 12, md: 10, lg: 10 }}>
             <HStack>
@@ -428,7 +430,7 @@ const CustomCardLanding = ({ data }: { data: cardLandingProps }) => {
 };
 
 const MiddleContentLanding2 = () => {
-  const dataTag: string[] = ["All", "Event", "Product", "News"];
+  const dataTag: string[] = ["All", "Event", "Consult", "News"];
   const settings = {
     dots: false,
     arrows: false,
@@ -446,24 +448,24 @@ const MiddleContentLanding2 = () => {
   const side = useBreakpointValue({ base: "30%", md: "20px" });
   const cards = [
     {
-      title: "Design Projects 1",
+      title: "Digital Operating Capital",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: "./img/business/corp-assets-004.jpg",
+      image: "/img/business/corp-assets-004.jpg",
     },
     {
-      title: "Design Projects 2",
+      title: "Strategy Advisor Data-Driven",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: "./img/business/corp-assets-005.jpg",
+      image: "/img/business/corp-assets-005.jpg",
     },
     {
-      title: "Design Projects 3",
+      title: "Single SignOn Ecosystem",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: "./img/business/corp-assets-006.jpg",
+      image: "/img/business/corp-assets-006.jpg",
     },
   ];
   return (
     <>
-      <BaseContentBodyLanding tittleContent={"Content 2"}>
+      <BaseContentBodyLanding tittleContent={"Yang Baru"}>
         <Grid templateColumns="repeat(12, 1fr)" w={"full"} gap={8}>
           <GridItem w={"full"} colSpan={{ base: 12, sm: 12, md: 10, lg: 10 }}>
             <HStack>
@@ -674,11 +676,11 @@ const MiddleContentLanding3 = () => {
   return (
     <>
       <Flex
-        bgImage={"./img/currency-bg.png"}
+        bgImage={"/img/currency-bg.png"}
         backgroundPosition={"center"}
         objectFit={"cover"}
       >
-        <BaseBackgoundContentBodyLanding tittleContent={"Content 3"}>
+        <BaseBackgoundContentBodyLanding tittleContent={"Bantuan?"}>
           <Grid templateColumns="repeat(12, 1fr)" w={"full"} gap={8}>
             <GridItem w={"full"} colSpan={12}>
               <Text color={"white"}>

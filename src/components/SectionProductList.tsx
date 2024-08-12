@@ -18,7 +18,7 @@ import SignatureLineColor from "./BottomLineSignature";
 import { Link } from "@chakra-ui/next-js";
 import { FaLocationArrow } from "react-icons/fa";
 
-const IMAGE = "./img/placeholder-header-sm.png";
+const IMAGE = "/img/placeholder-header-sm.png";
 
 interface CardProduct {
   title: string;

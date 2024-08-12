@@ -47,7 +47,7 @@ export default function TopNavigationLandingAlt() {
   }, []);
 
   const bg = useColorModeValue("white", "gray.800");
-  const boxShadow = "sm";
+  const boxShadow = "md";
 
   return (
     <Box

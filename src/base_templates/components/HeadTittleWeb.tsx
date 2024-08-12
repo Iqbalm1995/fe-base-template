@@ -7,7 +7,7 @@ const HeadTittleWeb = ({ tittlePage }: { tittlePage: string }) => {
         Portal Bank bjb{tittlePage.length > 0 ? " - " + tittlePage : ""}
       </title>
       <meta name="description" content="Learn more about Bank bjb." />
-      <link rel="icon" href="/img/logo-bjb.png" />
+      <link rel="icon" href="/img/favicon-bjb.png" />
     </Head>
   );
 };

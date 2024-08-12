@@ -102,61 +102,51 @@ export const HeadingGeneralComponentsLite = ({
   return (
     <>
       <Flex
-        pos={"relative"}
+        // pos={"relative"}
         h={{ base: "29vh", sm: "29vh", md: "20vh", lg: "20vh" }} // Responsive heights for different screen sizes
         w={"full"}
-        bgGradient={"linear(to-r, secondary.800, secondary.400)"}
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-        backgroundSize="cover"
-        backgroundImage={`url(./img/placeholder-header.png)`}
+        // bgGradient={"linear(to-r, secondary.800, secondary.400)"}
+        // backgroundPosition="center"
+        // backgroundRepeat="no-repeat"
+        // backgroundSize="cover"
+        // backgroundImage={`url(./img/placeholder-header.png)`}
         alignItems={"center"}
         justifyContent={"center"}
-        mt={2}
+        mt={4}
         zIndex={1}
       >
-        <Box
-          pos={"absolute"}
-          top="0"
-          left="0"
-          w="full"
-          h="full"
-          // bgGradient="linear(to-l, rgba(9, 27, 42, 0.4) 0%, rgba(9, 27, 42, 0.9) 100%)"
-          // bg={"red"}
-        >
-          <Container as={Stack} maxW={"container.xl"}>
-            <Flex
-              justifyContent={"start"}
-              alignItems={"end"}
-              h={{ base: "29vh", sm: "29vh", md: "20vh", lg: "20vh" }}
-              color={"white"}
-              pb={3}
-            >
-              <VStack justifyContent={"start"} w={"full"}>
-                <Heading
-                  as="h2"
-                  size={{ base: "md", sm: "md", md: "md", lg: "xl" }}
-                  color={"white"}
-                  // bg={"blue"}
-                  w={"full"}
-                >
-                  {data.tittlePage}
-                </Heading>
-                <Breadcrumb
-                  w={"full"}
-                  spacing="8px"
-                  separator={<ChevronRightIcon color="gray.200" />}
-                >
-                  {data.dataBreadcrumb.map((dt, idx) => (
-                    <BreadcrumbItem key={idx}>
-                      <BreadcrumbLink href="#">{dt}</BreadcrumbLink>
-                    </BreadcrumbItem>
-                  ))}
-                </Breadcrumb>
-              </VStack>
-            </Flex>
-          </Container>
-        </Box>
+        <Container as={Stack} maxW={"container.xl"}>
+          <Flex
+            justifyContent={"start"}
+            alignItems={"end"}
+            h={{ base: "29vh", sm: "29vh", md: "20vh", lg: "20vh" }}
+            color={"secondary.900"}
+            pb={3}
+          >
+            <VStack justifyContent={"start"} w={"full"}>
+              <Heading
+                as="h2"
+                size={{ base: "md", sm: "md", md: "md", lg: "xl" }}
+                color={"secondary.900"}
+                // bg={"blue"}
+                w={"full"}
+              >
+                {data.tittlePage}
+              </Heading>
+              <Breadcrumb
+                w={"full"}
+                spacing="8px"
+                separator={<ChevronRightIcon color="secondary.900" />}
+              >
+                {data.dataBreadcrumb.map((dt, idx) => (
+                  <BreadcrumbItem key={idx}>
+                    <BreadcrumbLink href="#">{dt}</BreadcrumbLink>
+                  </BreadcrumbItem>
+                ))}
+              </Breadcrumb>
+            </VStack>
+          </Flex>
+        </Container>
       </Flex>
     </>
   );

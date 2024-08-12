@@ -214,378 +214,374 @@ const ColorPalettePage = () => {
   return (
     <>
       <LayoutAdmin>
-        <Box mx={"auto"} bgColor={"gray.100"}>
-          <Container maxW={"8xl"} px={12} pb={12} pt={2} minH={"100vh"}>
-            <BreadcrumbAdmin HeadData={HeadPageName} />
-            <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
-              <Card w={"full"} minH={"100vh"}>
-                <CardBody p={10}>
-                  <VStack>
-                    <Flex
-                      bg={"gray.100"}
+        <BreadcrumbAdmin HeadData={HeadPageName} />
+        <VStack spacing={2} alignItems={"start"} w={"full"} pt={5}>
+          <Card w={"full"} minH={"100vh"}>
+            <CardBody p={10}>
+              <VStack>
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
                       w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
+                      color={"secondary.900"}
                     >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Primary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {primaryArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                              key={idx}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
+                      Primary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
                       w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
+                      pt={1}
                     >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
+                      {primaryArray.map((dt, idx) => (
+                        <GridItem
                           w={"full"}
-                          color={"secondary.900"}
+                          h={"full"}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                          key={idx}
                         >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {secondaryArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {grayArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {yellowArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {greenArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {tealArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {blueArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {purpleArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {pinkArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
-                    {/* TH */}
-                    <Flex
-                      bg={"gray.100"}
-                      w={"full"}
-                      h={fixedH}
-                      rounded={"md"}
-                      p={4}
-                    >
-                      <VStack w={"full"} justifyItems={"start"}>
-                        <Heading
-                          as="h5"
-                          size="sm"
-                          w={"full"}
-                          color={"secondary.900"}
-                        >
-                          Secondary Color
-                        </Heading>
-                        <Grid
-                          templateColumns="repeat(10, 1fr)"
-                          gap={1}
-                          w={"full"}
-                          pt={1}
-                        >
-                          {orangeArray.map((dt, idx) => (
-                            <GridItem
-                              w={"full"}
-                              h={"full"}
-                              key={idx}
-                              colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
-                            >
-                              <ColorBoxPalette data={dt} />
-                            </GridItem>
-                          ))}
-                        </Grid>
-                      </VStack>
-                    </Flex>
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
                   </VStack>
-                </CardBody>
-              </Card>
-            </VStack>
-          </Container>
-        </Box>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {secondaryArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {grayArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {yellowArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {greenArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {tealArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {blueArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {purpleArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {pinkArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+                {/* TH */}
+                <Flex
+                  bg={"gray.100"}
+                  w={"full"}
+                  h={fixedH}
+                  rounded={"md"}
+                  p={4}
+                >
+                  <VStack w={"full"} justifyItems={"start"}>
+                    <Heading
+                      as="h5"
+                      size="sm"
+                      w={"full"}
+                      color={"secondary.900"}
+                    >
+                      Secondary Color
+                    </Heading>
+                    <Grid
+                      templateColumns="repeat(10, 1fr)"
+                      gap={1}
+                      w={"full"}
+                      pt={1}
+                    >
+                      {orangeArray.map((dt, idx) => (
+                        <GridItem
+                          w={"full"}
+                          h={"full"}
+                          key={idx}
+                          colSpan={{ base: 12, sm: 12, md: 1, lg: 1 }}
+                        >
+                          <ColorBoxPalette data={dt} />
+                        </GridItem>
+                      ))}
+                    </Grid>
+                  </VStack>
+                </Flex>
+              </VStack>
+            </CardBody>
+          </Card>
+        </VStack>
       </LayoutAdmin>
     </>
   );
