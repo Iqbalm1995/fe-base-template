@@ -43,18 +43,17 @@ export default function CaptionCarousel() {
     {
       title: "Design Projects 1",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: "./img/bjb/21010001-2.jpeg",
+      image: "/img/bjb/21010001-2.jpeg",
     },
     {
       title: "Design Projects 2",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: "./img/bjb/img-20240305-wa0014.jpg",
+      image: "/img/bjb/img-20240305-wa0014.jpg",
     },
     {
       title: "Design Projects 3",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        "./img/bjb/tema-sayap-logo-shopping-resize-website-1920x560pxh.jpg",
+      image: "/img/bjb/tema-sayap-logo-shopping-resize-website-1920x560pxh.jpg",
     },
   ];
 

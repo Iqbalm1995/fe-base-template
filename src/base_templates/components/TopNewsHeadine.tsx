@@ -1,4 +1,4 @@
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { ArrowForwardIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import {
   Flex,
   HStack,
@@ -26,6 +26,8 @@ import {
   DrawerBody,
   VStack,
   Heading,
+  ButtonGroup,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaRegBell } from "react-icons/fa";
@@ -56,20 +58,45 @@ const DataNews: NewsInformationInterface[] = [
 
 const TopNewsHeadine = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [HideNotif, setHideNotif] = useState(false);
+
+  const ToggleShowNotif = () => {
+    setHideNotif(!HideNotif);
+  };
+
   return (
     <Flex
       // minWidth="max-content"
       // bg={"#1b517e"}
-      bgGradient={"linear(to-r, #0078ff, #edc817)"}
+      transition="transform 0.3s ease-in-out"
+      bgGradient={"linear(to-r, secondary.400, secondary.800)"}
       color={"white"}
       gap="2"
       px={8}
       py={1}
       justifyContent={"center"}
+      display={HideNotif ? "none" : "flex"}
     >
       <Wrap py={{ base: 2, md: 0 }}>
         <WrapItem>
-          <Flex justifyContent={{ base: "center", md: "end" }} h={"full"}>
+          <Flex
+            justifyContent={{ base: "center", md: "end" }}
+            h={"full"}
+            gap={2}
+          >
+            <Tooltip
+              label="Sembunyikan Berita Notifikasi"
+              aria-label="news notif tooltip"
+            >
+              <Button
+                size={{ base: "xs", md: "sm" }}
+                variant={"link"}
+                color={"white"}
+                onClick={ToggleShowNotif}
+              >
+                <SmallCloseIcon />
+              </Button>
+            </Tooltip>
             <HStack
               fontSize={"0.8em"}
               bgColor={"blue.300"}
@@ -104,21 +131,27 @@ const TopNewsHeadine = () => {
             h={"full"}
             alignItems={"center"}
           >
-            <Button
-              rightIcon={<ArrowForwardIcon />}
-              size={{ base: "xs", md: "sm" }}
-              colorScheme="blackAlpha"
-              onClick={onOpen}
-            >
-              Selengkapnya
-            </Button>
+            <ButtonGroup isAttached>
+              <Button
+                rightIcon={<ArrowForwardIcon />}
+                size={{ base: "xs", md: "sm" }}
+                colorScheme="blackAlpha"
+                _hover={{
+                  bg: "yellow.400",
+                  color: "white",
+                }}
+                onClick={onOpen}
+              >
+                Selengkapnya
+              </Button>
+            </ButtonGroup>
           </Flex>
         </WrapItem>
       </Wrap>
       <Drawer placement={"right"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Informasi Portal</DrawerHeader>
+          <DrawerHeader>Papan Informasi</DrawerHeader>
           <DrawerBody>
             <VStack>
               {DataNews.map((data, index) => (
@@ -138,13 +171,17 @@ const BoxInformationData = ({ data }: { data: NewsInformationInterface }) => {
       <Flex
         p={4}
         rounded={"xl"}
-        bgGradient={"linear(to-b, gray.100, gray.300)"}
+        bgGradient={"linear(to-br, white, secondary.50)"}
         color={"gray.700"}
+        boxShadow={"md"}
       >
         <Stack alignItems={"start"} spacing={3}>
           <Heading color={"#1b517e"} as="h3" size="md">
             {data.title}
           </Heading>
+          <Text fontSize={"sm"} color={"gray.500"}>
+            Kamis, 17 Agustus 2024 19.45
+          </Text>
           <Box p={1}>
             <p>{data.desc}</p>
           </Box>

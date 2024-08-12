@@ -4,7 +4,7 @@ export const LogoApplication = () => {
   return (
     <>
       {/* <Flex width={"70px"} ml={5}>
-        <Image src={"./img/logo-bjb.png"} alt="Bank bjb" />
+        <Image src={"/img/logo-bjb.png"} alt="Bank bjb" />
       </Flex> */}
       {/* <Text fontWeight={600} fontSize={"18px"} pl={3}>
         PORTAL

@@ -113,50 +113,50 @@ const DataHighLightProduct: Array<CardProduct> = [
     title: "Pendaftaran IBC",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, culpa ullam saepe veniam sapiente cupiditate explicabo voluptatem libero eaque eos perferendis, repellendus mollitia cumque alias ratione iure obcaecati non sed!",
     link: "/form/registration-ibc/",
-    imageURL: "./img/business/corp-assets-003.jpg",
+    imageURL: "/img/business/corp-assets-003.jpg",
   },
   {
     title:
       "Permohonan Pembukaan Surat Kredit Berdokumen Dalam Negeri (PPSKBDN)",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, culpa ullam saepe veniam sapiente cupiditate explicabo voluptatem libero eaque eos perferendis, repellendus mollitia cumque alias ratione iure obcaecati non sed!",
     link: "#",
-    imageURL: "./img/business/corp-assets-002.jpg",
+    imageURL: "/img/business/corp-assets-002.jpg",
   },
   {
     title: "Permohonan Pembukaan Kredit Berdokumen (PPLC)",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, culpa ullam saepe veniam sapiente cupiditate explicabo voluptatem libero eaque eos perferendis, repellendus mollitia cumque alias ratione iure obcaecati non sed!",
     link: "#",
-    imageURL: "./img/business/corp-assets-006.jpg",
+    imageURL: "/img/business/corp-assets-006.jpg",
   },
   {
     title: "Pembukaan Rekening Non Perorangan",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, culpa ullam saepe veniam sapiente cupiditate explicabo voluptatem libero eaque eos perferendis, repellendus mollitia cumque alias ratione iure obcaecati non sed!",
     link: "#",
-    imageURL: "./img/business/corp-assets-004.jpg",
+    imageURL: "/img/business/corp-assets-004.jpg",
   },
   {
     title: "Permohonan Penggunaan bjb Garansi Bank Online",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus mollitia cumque alias ratione iure obcaecati non sed!",
     link: "#",
-    imageURL: "./img/business/corp-assets-004.jpg",
+    imageURL: "/img/business/corp-assets-004.jpg",
   },
   {
     title: "Formulir Virtual Account Update Offline & Online",
     desc: "Lorem ipsum dolor sit!",
     link: "#",
-    imageURL: "./img/business/corp-assets-004.jpg",
+    imageURL: "/img/business/corp-assets-004.jpg",
   },
   {
     title: "Formulir Virtual Account Service Agreement Offline & Online",
     desc: "Lorem ipsum dolor sit!",
     link: "#",
-    imageURL: "./img/business/corp-assets-004.jpg",
+    imageURL: "/img/business/corp-assets-004.jpg",
   },
   {
     title: "Form Pembukaan Custody",
     desc: "Lorem ipsum dolor sit!",
     link: "#",
-    imageURL: "./img/business/corp-assets-004.jpg",
+    imageURL: "/img/business/corp-assets-004.jpg",
   },
 ];
 

@@ -11,11 +11,11 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
-  Switch,
   HStack,
   StackDivider,
+  Container,
+  Image,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -23,88 +23,127 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { PaddingLanding } from "@/constants/MasterConstant";
-import { LogoApps } from "@/base_templates/components/LogoApps";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
+import AuthPanelModal from "./AuthForm";
+import { LanguageSelector } from "@/base_templates/components/LanguageSelector";
+import { NAV_ITEMS, NavItem } from "@/context/NavigationData";
+import { LogoApplications } from "@/base_templates/components/LogoApps";
 
 export default function TopNavigationLanding() {
   const { isOpen, onToggle } = useDisclosure();
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const bg = useColorModeValue("white", "gray.800");
+  const boxShadow = scrollY > 0 ? "sm" : "none";
 
   return (
-    <Box bgGradient={"linear(to-r, #1b517e, #063154)"}>
-      <Flex
-        // bg={useColorModeValue("white", "gray.800")}
-        // bg={"red"}
-        // color={useColorModeValue("gray.600", "white")}
-        color={"white"}
-        minH={"60px"}
-        py={{ base: 2 }}
-        // px={{ base: 4 }}
-        px={PaddingLanding}
-        // borderBottom={1}
-        // borderStyle={"solid"}
-        // borderColor={"rgba(27, 81, 126, 0.2)"}
-        align={"center"}
-        pos={"relative"}
-        zIndex={2}
+    <Box
+      position="fixed"
+      top={0}
+      left={0}
+      right={0}
+      width="100%"
+      zIndex={10}
+      bg={scrollY > 0 ? bg : "transparent"}
+      boxShadow={boxShadow}
+      transition="background-color 0.3s, box-shadow 0.3s"
+    >
+      <TopNewsHeadine />
+      <Container
+        as={Stack}
+        maxW={"container.xl"}
+        // bgGradient={scrollY > 0 ? "none" : "linear(to-r, #1b517e, #063154)"}
       >
         <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
+          color={"white"}
+          minH={"60px"}
+          py={{ base: 2 }}
+          align={"center"}
+          pos={"relative"}
+          zIndex={2}
         >
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-            colorScheme={"white"}
-          />
-        </Flex>
-        {/* Logo Apps */}
-        <LogoApps />
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "end" }} pr={5}>
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
+          <Flex
+            flex={{ base: 1, md: "auto" }}
+            ml={{ base: -2 }}
+            display={{ base: "flex", md: "none" }}
+          >
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+              colorScheme={scrollY > 0 ? "secondary" : "white"}
+            />
           </Flex>
+          {/* Logo Apps */}
+          <>
+            <LogoApplications
+              colorText={scrollY > 0 ? "secondary.300" : "white"}
+            />
+          </>
+          <Flex
+            flex={{ base: 1 }}
+            justify={{ base: "center", md: "end" }}
+            pr={5}
+          >
+            <Flex display={{ base: "none", md: "flex" }} ml={10}>
+              <DesktopNav />
+            </Flex>
+          </Flex>
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify={"flex-end"}
+            direction={"row"}
+            spacing={6}
+          >
+            <LanguageSelector />
+            <AuthPanelModal />
+          </Stack>
         </Flex>
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <LanguageSelector />
-          <Button colorScheme={"primary"}>Masuk</Button>
-        </Stack>
-      </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
+        <Collapse in={isOpen} animateOpacity>
+          <MobileNav />
+        </Collapse>
+      </Container>
     </Box>
   );
 }
 
-export const LanguageSelector = () => {
-  return (
-    <>
-      <HStack divider={<StackDivider />}>
-        <Button colorScheme="whiteAlpha" variant="ghost" size={"xs"} isActive>
-          ID
-        </Button>
-        <Button colorScheme="whiteAlpha" variant="ghost" size={"xs"}>
-          EN
-        </Button>
-      </HStack>
-    </>
-  );
-};
-
 const DesktopNav = () => {
-  const linkColor = "white";
-  const linkHoverColor = "gray.200";
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const linkColor = scrollY > 0 ? "secondary.900" : "white";
+  const linkHoverColor = scrollY > 0 ? "secondary.400" : "gray.200";
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
@@ -161,19 +200,26 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ bg: useColorModeValue("#E6F3FF", "gray.900") }}
+      _hover={{
+        bg: useColorModeValue("blue.50", "gray.900"),
+      }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
-            _groupHover={{ color: "#246ca8" }}
+            _groupHover={{ color: "secondary.400" }}
             fontWeight={500}
             color={"gray.800"}
           >
             {label}
           </Text>
-          <Text fontSize={"sm"} color={"gray.500"}>
+          <Text
+            fontSize={"sm"}
+            color={"gray.400"}
+            transition={"all .3s ease"}
+            _groupHover={{ color: "gray.800" }}
+          >
             {subLabel}
           </Text>
         </Box>
@@ -186,7 +232,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           align={"center"}
           flex={1}
         >
-          <Icon color={"#246ca8"} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={"secondary.400"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Box>
@@ -195,7 +241,13 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 
 const MobileNav = () => {
   return (
-    <Stack p={4} display={{ md: "none" }} mb={"60px"}>
+    <Stack
+      p={4}
+      display={{ md: "none" }}
+      mb={"60px"}
+      bg={"white"}
+      rounded={"xl"}
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -221,7 +273,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         <Text
           fontWeight={600}
           // color={useColorModeValue("gray.600", "gray.200")}
-          color={"gray.200"}
+          color={"secondary.800"}
         >
           {label}
         </Text>
@@ -232,27 +284,25 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             transform={isOpen ? "rotate(180deg)" : ""}
             w={6}
             h={6}
-            color={"gray.200"}
+            color={"secondary.800"}
           />
         )}
       </Box>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
         <Stack
-          mt={2}
           pl={4}
           borderLeft={1}
           borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
+          borderColor={useColorModeValue("secondary.800", "gray.700")}
           align={"start"}
         >
           {children &&
             children.map((child) => (
               <Box
-                color={"gray.200"}
+                color={"secondary.800"}
                 as="a"
                 key={child.label}
-                py={2}
                 href={child.href}
               >
                 {child.label}
@@ -263,44 +313,3 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     </Stack>
   );
 };
-
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
-
-const NAV_ITEMS: Array<NavItem> = [
-  // {
-  //   label: "Beranda",
-  //   href: "/",
-  // },
-  // {
-  //   label: "Produk",
-  //   children: [
-  //     {
-  //       label: "Sub menu 1",
-  //       subLabel: "Desc sub menu 1",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "Sub menu 2",
-  //       subLabel: "Desc sub menu 2",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
-  {
-    label: "Tentang Kami",
-    href: "#",
-  },
-  {
-    label: "Hubungi Kami",
-    href: "#",
-  },
-  // {
-  //   label: "Blank Page",
-  //   href: "/landing/blank-page",
-  // },
-];

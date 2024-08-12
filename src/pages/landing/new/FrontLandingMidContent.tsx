@@ -29,7 +29,7 @@ export default function MidContentLanding() {
   });
   return (
     <Box
-      bgImage={"./img/currency-bg.png"}
+      bgImage={"/img/currency-bg.png"}
       backgroundPosition={"center"}
       objectFit={"cover"}
       px={PaddingLanding}
