@@ -511,7 +511,7 @@ const NavItem = ({ data, mode }: { data: LinkItemProps; mode: boolean }) => {
             w={"full"}
             h={"full"}
             alignItems={"center"}
-            transition={"all .25s ease-in-out"}
+            // transition={"all 0.2s ease-in-out"}
             transform={
               isHovered && !mode ? "translateX(10px)" : "translateY(0)"
             }
@@ -528,7 +528,7 @@ const NavItem = ({ data, mode }: { data: LinkItemProps; mode: boolean }) => {
               />
             )}
             <Flex
-              transition="0.5s ease-in-out"
+              // transition="0.2s ease-in-out"
               //   transition="transform 0.3s ease-in-out"
               w={"full"}
               h={"full"}

@@ -33,7 +33,7 @@ import HeadTittleWeb from "@/base_templates/components/HeadTittleWeb";
 const LandingPage = () => {
   return (
     <LayoutLanding>
-      <HeadTittleWeb tittlePage={""} />
+      {/* <HeadTittleWeb tittlePage={""} /> */}
       <HeadingContentLanding />
       <MiddleContentLanding />
       <MiddleContentLanding2 />
@@ -137,7 +137,7 @@ const HeadingContentLanding = () => {
                   colSpan={12}
                   // bg={"green"}
                 >
-                  {/* <StaticHighlightLanding /> */}
+                  <StaticHighlightLanding />
                 </GridItem>
               </Grid>
             </Container>
