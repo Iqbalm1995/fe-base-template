@@ -1,6 +1,6 @@
 import FooterLanding from "@/base_templates/layout/landing/FooterLanding";
 import LayoutLanding from "@/base_templates/layout/landing/LayoutLanding";
-import { ReactNode, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -29,6 +29,10 @@ import ButtonSignatureIcon1, {
   ButtonSignature1,
 } from "@/base_templates/components/SignatureComponents";
 import HeadTittleWeb from "@/base_templates/components/HeadTittleWeb";
+import { TextLang } from "@/utils/langData";
+import { useLangData } from "@/hooks/useLangData";
+import { LanguageContext } from "@/context/LanguageContext";
+import { LanguageKeys, TextContent } from "@/constants/Translations";
 
 const LandingPage = () => {
   return (
@@ -44,6 +48,8 @@ const LandingPage = () => {
 };
 
 const HeadingContentLanding = () => {
+  const { language } = useContext(LanguageContext);
+  const lang: LanguageKeys = language as LanguageKeys;
   return (
     <>
       <Flex
@@ -111,14 +117,9 @@ const HeadingContentLanding = () => {
                         // bg={"blue"}
                         w={"full"}
                       >
-                        Achieve Greater Efficiency <br />
-                        Fleksibilitas Corporate Bisnis Anda
+                        {TextContent[lang].landingTitleHeading}
                       </Heading>
-                      <Text>
-                        Pelayanan perbankan lengkap untuk kebutuhan bisnis Anda
-                        kini lebih mudah diakses dengan Portal, meningkatkan
-                        efisiensi dan fleksibilitas operasional.
-                      </Text>
+                      <Text>{TextContent[lang].landingSubLineHeading}</Text>
                     </VStack>
                   </Flex>
                 </GridItem>
@@ -148,20 +149,42 @@ const HeadingContentLanding = () => {
   );
 };
 
+interface StatisticPercentageDetail {
+  nominalStatic: string;
+  descID: string;
+  descEN: string;
+}
+
 const StaticHighlightLanding = () => {
+  const StaticData: StatisticPercentageDetail[] = [
+    {
+      nominalStatic: "80%",
+      descID:
+        "Transaksi digital skala besar di Indonesia didukung oleh bank bjb, meningkatkan efisiensi dan kemudahan bagi pelaku bisnis.",
+      descEN:
+        "Large-scale digital transactions in Indonesia are supported by bank bjb, increasing efficiency and convenience for business people.",
+    },
+    {
+      nominalStatic: "Rp 100T",
+      descID: "Angka transaksi harian yang terjadi melalui bank bjb.",
+      descEN: "Daily transaction figures that occur through bank bjb.",
+    },
+    {
+      nominalStatic: "75%",
+      descID:
+        "Kontribusi bank bjb dalam pembayaran korporasi mitra memperkuat hubungan bisnis dan meningkatkan kepercayaan mitra.",
+      descEN:
+        "Bank bjb's contribution to partner corporate payments strengthens business relationships and increases partner trust.",
+    },
+  ];
+
   return (
     <>
       <Box
         mx={"auto"}
         color={"white"}
-        // bgColor={"white"}
-        // bgGradient={"linear(to-r, #1b517e, #063154)"}
-        // color={useColorModeValue("white", "gray.200")}
-        // px={PaddingLanding}
         px={{ base: 0, sm: 0, md: "50px" }}
-        // py={5}
         mb={{ base: 2, md: 5 }}
-        // bg={"red"}
       >
         <Grid
           templateColumns={{
@@ -182,27 +205,11 @@ const StaticHighlightLanding = () => {
   );
 };
 
-interface StatisticPercentageDetail {
-  nominalStatic: string;
-  desc: string;
-}
-
-const StaticData: StatisticPercentageDetail[] = [
-  {
-    nominalStatic: "80%",
-    desc: "Transaksi digital skala besar di Indonesia didukung oleh bank bjb, meningkatkan efisiensi dan kemudahan bagi pelaku bisnis.",
-  },
-  {
-    nominalStatic: "Rp 100T",
-    desc: "Angka transaksi harian yang terjadi melalui bank bjb.",
-  },
-  {
-    nominalStatic: "75%",
-    desc: "Kontribusi bank bjb dalam pembayaran korporasi mitra memperkuat hubungan bisnis dan meningkatkan kepercayaan mitra.",
-  },
-];
-
 const StaticDetail = ({ data }: { data: StatisticPercentageDetail }) => {
+  const { language } = useContext(LanguageContext);
+  const lang: LanguageKeys = language as LanguageKeys;
+  const descData =
+    lang === "EN" ? data.descEN : lang === "ID" ? data.descID : "";
   return (
     <>
       <Flex
@@ -215,7 +222,7 @@ const StaticDetail = ({ data }: { data: StatisticPercentageDetail }) => {
         <Text fontSize={"4xl"} fontWeight={"bold"}>
           {data.nominalStatic}
         </Text>
-        <Box fontSize={"sm"}>{data.desc}</Box>
+        <Box fontSize={"sm"}>{descData}</Box>
       </Flex>
     </>
   );

@@ -21,6 +21,7 @@ export const ButtonSignature1 = ({
       _hover={{
         bg: "yellow.400",
         color: "white",
+        // bgGradient: "linear(to-br, secondary.500, yellow.500)",
       }}
     >
       {textStr}

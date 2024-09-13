@@ -97,6 +97,8 @@ import { RiMenu2Line } from "react-icons/ri";
 import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
 import { FaPowerOff } from "react-icons/fa6";
 import { FooterAdminPanel } from "@/components/Footer";
+import { useRouter } from "next/router";
+import SignatureLineColor from "@/components/BottomLineSignature";
 
 // Page Split
 // const ProfileModal = React.lazy(
@@ -124,94 +126,12 @@ const LinkItems: LinkItemProps[] = [
     children: [],
   },
   {
-    name: "Template",
-    icon: FiPenTool,
-    link: "#",
-    role: ["admin"],
-    menuID: "2",
-    children: [
-      {
-        name: "Color Palette",
-        icon: FiBox,
-        link: "/template/color-palette",
-        role: ["admin"],
-        menuID: "2-1",
-        children: [],
-      },
-      {
-        name: "Tables",
-        icon: FiBox,
-        link: "/template/tables",
-        role: ["admin"],
-        menuID: "2-2",
-        children: [],
-      },
-      {
-        name: "Button",
-        icon: FiBox,
-        link: "/template/buttons",
-        role: ["admin"],
-        menuID: "2-2",
-        children: [],
-      },
-      {
-        name: "Card",
-        icon: FiBox,
-        link: "/template/cards",
-        role: ["admin"],
-        menuID: "2-2",
-        children: [],
-      },
-    ],
-  },
-  {
-    name: "Produk",
-    icon: FiHeart,
-    link: "#",
-    role: ["admin"],
-    menuID: "1",
-    children: [],
-  },
-  {
-    name: "Market",
-    icon: GrTransaction,
-    link: "#",
-    role: ["admin"],
-    menuID: "1",
-    children: [],
-  },
-  {
     name: "Task",
     icon: FaTasks,
     link: "#",
     role: ["admin"],
     menuID: "1",
     children: [],
-  },
-  {
-    name: "Management",
-    icon: FiUsers,
-    link: "#",
-    role: ["admin"],
-    menuID: "2",
-    children: [
-      {
-        name: "Users",
-        icon: FiUser,
-        link: "#",
-        role: ["admin"],
-        menuID: "2-1",
-        children: [],
-      },
-      {
-        name: "Teams",
-        icon: FiUsers,
-        link: "#",
-        role: ["admin"],
-        menuID: "2-2",
-        children: [],
-      },
-    ],
   },
   {
     name: "Pengaturan",
@@ -233,8 +153,8 @@ const LinkItems: LinkItemProps[] = [
 
 export default function NavigationAdmin({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const [LiteMode, setLiteMode] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Retrieve the value from local storage when the component mounts
@@ -279,15 +199,17 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
             height="20"
             alignItems="center"
             bg={useColorModeValue("white", "gray.900")}
-            borderBottomWidth="1px"
-            borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+            // borderBottomWidth="1px"
+            // borderBottomColor={useColorModeValue("gray.200", "gray.700")}
             justifyContent={{ base: "space-between", md: "flex-end" }}
             backgroundPosition="left"
             backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            // bgGradient={"linear(to-r, white, red.900)"}
+            backgroundSize="gray.900"
+            // bgGradient={"linear(to-r, gray.200, white)"}
+            color={"white"}
             // backgroundImage={`url(./img/agustus-navbar-bg-2.png)`}
             // bgColor={"red"}
+            boxShadow={"md"}
           >
             <IconButton
               display={{ base: "flex", md: "none" }}
@@ -301,20 +223,25 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
               <IconButton
                 onClick={toggleLiteMode}
                 variant="ghost"
-                // colorScheme={"secondary"}
+                colorScheme={"gray"}
                 aria-label="lite mode"
                 icon={<RiMenu2Line />}
                 size={"lg"}
+                // rounded={"xl"}
               />
             </Box>
 
-            <Box display={{ base: "flex", md: "none" }}>
+            <Flex
+              display={{ base: "flex", md: "none" }}
+              justifyContent={"center"}
+              w={"full"}
+            >
               {LiteMode ? (
                 <LogoApplicationsLite colorText="secondary.500" />
               ) : (
                 <LogoApplications colorText="secondary.500" />
               )}
-            </Box>
+            </Flex>
 
             <HStack spacing={{ base: "2", md: "6" }}>
               <Flex alignItems={"start"}>
@@ -349,33 +276,18 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
                     _focus={{ boxShadow: "none" }}
                   >
                     <HStack>
-                      <Avatar
-                        size={"sm"}
-                        src={"/img/default-user-img.jpg"}
-                        mr="2"
-                      />
-                      <VStack
+                      <Tooltip borderRadius={"xl"} hasArrow label={"John Doe"}>
+                        <Avatar
+                          size={"sm"}
+                          // src={"/img/default-user-img.jpg"}
+                          name={"John Doe"}
+                          mr="2"
+                        />
+                      </Tooltip>
+                      <Box
+                        color={"gray.800"}
                         display={{ base: "none", md: "flex" }}
-                        alignItems="flex-start"
-                        spacing="1px"
-                        ml="2"
-                        mr="2"
                       >
-                        <Text fontSize="sm" fontWeight={600}>
-                          John Doe
-                        </Text>
-                        <HStack
-                          divider={<StackDivider borderColor="gray.200" />}
-                        >
-                          <Text fontSize="xs" color="gray.600">
-                            User8732569435
-                          </Text>
-                          <Text fontSize="xs" color="gray.600">
-                            Approver
-                          </Text>
-                        </HStack>
-                      </VStack>
-                      <Box display={{ base: "none", md: "flex" }}>
                         <FiChevronDown />
                       </Box>
                     </HStack>
@@ -387,6 +299,7 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
                     {/* <MenuDivider /> */}
                     <Link href={"/"}>
                       <MenuItem
+                        color={"gray.800"}
                         _hover={{
                           bg: "red.600",
                           color: "white",
@@ -417,7 +330,8 @@ export default function NavigationAdmin({ children }: { children: ReactNode }) {
               >
                 {children}
               </Container>
-              {/* <FooterAdminPanel /> */}
+              <FooterAdminPanel />
+              <SignatureLineColor />
             </Box>
           </Box>
         </Box>
@@ -456,6 +370,8 @@ const SidebarContent = ({
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
 
+      <AdditionalProfileBar LiteModeTrigger={LiteModeTrigger} />
+
       <Flex pt={5} pb={2} mx={3} h={"full"}>
         <VStack w={"full"} h={"90%"} align={"start"}>
           <Heading pl={2} as="h6" size="xs">
@@ -468,7 +384,7 @@ const SidebarContent = ({
           </Box>
           <Spacer />
           {/* <AdditionalBarAdvertis /> */}
-          <AdditionalBarAlt />
+          {/* <AdditionalBarAlt /> */}
         </VStack>
       </Flex>
     </Box>
@@ -484,67 +400,104 @@ const NavItem = ({ data, mode }: { data: LinkItemProps; mode: boolean }) => {
     setIsOpen(!isOpen);
   };
 
+  const [IsActiveNav, setIsActiveNav] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Split the pathname by "/" and get the first segment
+    const firstSegment = router.pathname.split("/")[1];
+    const currentPath = router.pathname;
+    if (firstSegment === data.link.split("/")[1]) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+
+    if (currentPath === data.link && data.children.length <= 0) {
+      setIsActiveNav(true);
+    } else {
+      setIsActiveNav(false);
+    }
+  }, [router.pathname]);
+
   return (
     <Box w={"full"}>
-      <Link href={data.link} onClick={hasChildren ? handleToggle : undefined}>
-        <Flex
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          align="center"
-          px="4"
-          py="3"
-          my="1"
-          borderRadius="lg"
-          role="group"
-          cursor="pointer"
-          _hover={{
-            transition: "0.2s ease-in-out",
-            bg: "secondary.500",
-            color: "white",
-            pl: mode ? "4" : "5",
-          }}
-          //   bg={"white"}
-          color={"black.500"}
-          justifyContent={"center"}
+      <Link href={data.children.length == 0 ? data.link : "#"}>
+        <Tooltip
+          label={data.name}
+          placement="right-end"
+          visibility={mode ? "visible" : "hidden"}
         >
           <Flex
-            w={"full"}
-            h={"full"}
-            alignItems={"center"}
-            // transition={"all 0.2s ease-in-out"}
-            transform={
-              isHovered && !mode ? "translateX(10px)" : "translateY(0)"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            align="center"
+            px="4"
+            py="3"
+            my="1"
+            borderRadius="lg"
+            role="group"
+            cursor="pointer"
+            boxShadow={IsActiveNav ? "md" : "none"}
+            _hover={{
+              color: "white",
+              // bg: "secondary.500",
+              bgGradient: "linear(to-r, secondary.500, secondary.600)", // Default gradient
+              pl: mode ? "4" : "5",
+              boxShadow: "md",
+            }}
+            // bg={IsActiveNav ? "secondary.500" : "transparent"}
+            bgGradient={
+              IsActiveNav
+                ? "linear(to-r, secondary.500, secondary.600)"
+                : "linear(to-r, transparent, transparent)"
             }
+            color={IsActiveNav ? "white" : "gray.900"}
             justifyContent={"center"}
+            // onClick={() => {
+            //   GoNavigationLink();
+            // }}
+            onClick={hasChildren ? handleToggle : undefined}
           >
-            {data.icon && (
-              <Icon
-                mr={mode ? "0" : "6"}
-                fontSize={mode ? "25" : "20"}
-                _groupHover={{
-                  color: "white",
-                }}
-                as={data.icon}
-              />
-            )}
             <Flex
-              // transition="0.2s ease-in-out"
-              //   transition="transform 0.3s ease-in-out"
               w={"full"}
               h={"full"}
               alignItems={"center"}
-              display={mode ? "none" : "flex"}
+              transition={".2s ease"}
+              transform={
+                isHovered && !mode ? "translateX(10px)" : "translateY(0)"
+              }
+              justifyContent={"center"}
             >
-              <Text>{data.name}</Text>
-              {hasChildren && (
+              {data.icon && (
                 <Icon
-                  ml="auto"
-                  as={isOpen ? ChevronDownIcon : ChevronRightIcon}
+                  mr={mode ? "0" : "6"}
+                  fontSize={mode ? "25" : "20"}
+                  _groupHover={{
+                    color: "white",
+                  }}
+                  color={IsActiveNav ? "white" : "gray.900"}
+                  as={data.icon}
                 />
               )}
+              <Flex
+                w={"full"}
+                h={"full"}
+                alignItems={"center"}
+                display={mode ? "none" : "flex"}
+              >
+                <Text>{data.name}</Text>
+                {hasChildren && (
+                  <Icon
+                    ml="auto"
+                    as={isOpen ? ChevronDownIcon : ChevronRightIcon}
+                  />
+                )}
+              </Flex>
             </Flex>
           </Flex>
-        </Flex>
+        </Tooltip>
       </Link>
       {isOpen && hasChildren && (
         <MotionBox
@@ -663,92 +616,64 @@ function AdditionalBarAlt() {
   );
 }
 
-function AdditionalBar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+function AdditionalProfileBar({
+  LiteModeTrigger,
+}: {
+  LiteModeTrigger: boolean;
+}) {
   const [show, setShow] = React.useState(false);
   const showToast = useToastHelperShort();
 
   return (
     <>
       <Box
-        bgGradient={"linear(to-r, #1b517e, #063154)"}
+        bgGradient={
+          LiteModeTrigger
+            ? "linear(to-r, white, white)"
+            : "linear(to-r, gray.100, gray.200)"
+        }
         m={2}
         mr={3}
-        borderRadius={8}
+        py={LiteModeTrigger ? 0 : 2}
+        rounded={"lg"}
+        transition="0.5s ease-in-out"
       >
-        <Flex px={3} pt={3} pb={2}>
-          <Heading as="h6" size="xs" textColor={"white"}>
-            <Flex>
-              <Box pt={1} pr={1}>
-                Saldo
-              </Box>
-              <Box>
-                <Tooltip label="Tampilkan Saldo" placement="top">
-                  <Button
-                    colorScheme="bjb_color_theme"
-                    color={"white"}
-                    variant={"ghost"}
-                    size="xs"
-                    p={0}
-                    m={0}
-                    // onClick={handleShowNominal}
-                  >
-                    {show ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
-                </Tooltip>
-              </Box>
-              <Box>
-                <Tooltip label="Perbaharui Saldo" placement="top">
-                  <Button
-                    colorScheme="bjb_color_theme"
-                    color={"white"}
-                    variant={"ghost"}
-                    size="xs"
-                    p={0}
-                    m={0}
-                    // onClick={() => handleRefreshBalance()}
-                  >
-                    <RepeatIcon />
-                  </Button>
-                </Tooltip>
-              </Box>
-              <Box>
-                <Tooltip label="Informasi Detail" placement="top">
-                  <Button
-                    colorScheme="bjb_color_theme"
-                    color={"white"}
-                    variant={"ghost"}
-                    size="xs"
-                    p={0}
-                    m={0}
-                    onClick={onOpen}
-                  >
-                    <InfoIcon />
-                  </Button>
-                </Tooltip>
-              </Box>
+        <Flex px={3} pt={3} pb={2} w={"full"}>
+          <Flex w={"full"}>
+            <Tooltip borderRadius={"xl"} hasArrow label={"John Doe"}>
+              <Avatar size={"md"} name={"John Doe"} mr="2" />
+            </Tooltip>
+            <Flex
+              w={"full"}
+              h={"full"}
+              alignItems={"center"}
+              alignContent={"start"}
+              display={LiteModeTrigger ? "none" : "flex"}
+            >
+              <VStack w={"full"} h={"full"} spacing={0} align={"start"} p={1}>
+                <Text color={"gray.900"} fontSize={"sm"} fontWeight={700}>
+                  John Doe
+                </Text>
+                <Text fontSize="xs" color="gray.600">
+                  Approver
+                </Text>
+              </VStack>
             </Flex>
-          </Heading>
+          </Flex>
         </Flex>
-        <Flex bgColor={"#0e283f"} px={3} py={2} borderRadius={8}>
+        {/* <Flex
+          bgGradient={"linear(to-r, yellow.400, yellow.500)"}
+          px={3}
+          py={2}
+          roundedBottom={"lg"}
+        >
           <Box>
             <Text as="b" textColor={"white"}>
               {show ? "0" : "Rp ********"}
             </Text>
           </Box>
-        </Flex>
+        </Flex> */}
       </Box>
-      {/* MODAL STATE */}
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Informasi Akun Dan Saldo</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody mb={10}>
-            {/* <pre>{JSON.stringify(DataBalance, null, 2)}</pre> */}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
     </>
   );
 }

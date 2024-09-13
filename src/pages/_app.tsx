@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const colors = {
   bjb_color_theme: {
@@ -162,7 +163,9 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={extendTheme(theme)}>
-      <Component {...pageProps} />
+      <LanguageProvider>
+        <Component {...pageProps} />
+      </LanguageProvider>
     </ChakraProvider>
   );
 }

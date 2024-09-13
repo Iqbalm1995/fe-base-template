@@ -23,13 +23,15 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import TopNewsHeadine from "@/base_templates/components/TopNewsHeadine";
 import AuthPanelModal from "./AuthForm";
 import { LanguageSelector } from "@/base_templates/components/LanguageSelector";
 import { NAV_ITEMS, NavItem } from "@/context/NavigationData";
 import { LogoApplications } from "@/base_templates/components/LogoApps";
+import { LanguageKeys } from "@/constants/Translations";
+import { LanguageContext } from "@/context/LanguageContext";
 
 export default function TopNavigationLanding() {
   const { isOpen, onToggle } = useDisclosure();
@@ -129,6 +131,8 @@ export default function TopNavigationLanding() {
 }
 
 const DesktopNav = () => {
+  const { language } = useContext(LanguageContext);
+  const lang: LanguageKeys = language as LanguageKeys;
   const [scrollY, setScrollY] = useState(0);
 
   const handleScroll = () => {
@@ -164,7 +168,11 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
               >
-                {navItem.label}
+                {lang == "EN"
+                  ? navItem.labelEN
+                  : lang == "ID"
+                  ? navItem.labelID
+                  : ""}
               </Box>
             </PopoverTrigger>
 
@@ -191,7 +199,17 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({
+  label,
+  labelEN,
+  labelID,
+  subLabelEN,
+  subLabelID,
+  href,
+  subLabel,
+}: NavItem) => {
+  const { language } = useContext(LanguageContext);
+  const lang: LanguageKeys = language as LanguageKeys;
   return (
     <Box
       as="a"
@@ -212,7 +230,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
             fontWeight={500}
             color={"gray.800"}
           >
-            {label}
+            {lang == "EN" ? labelEN : lang == "ID" ? labelID : ""}
           </Text>
           <Text
             fontSize={"sm"}
@@ -220,7 +238,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
             transition={"all .3s ease"}
             _groupHover={{ color: "gray.800" }}
           >
-            {subLabel}
+            {lang == "EN" ? subLabelEN : lang == "ID" ? subLabelID : ""}
           </Text>
         </Box>
         <Flex
@@ -248,14 +266,22 @@ const MobileNav = () => {
       bg={"white"}
       rounded={"xl"}
     >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+      {NAV_ITEMS.map((navItem, idx) => (
+        <MobileNavItem key={idx} {...navItem} />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({
+  label,
+  labelEN,
+  labelID,
+  children,
+  href,
+}: NavItem) => {
+  const { language } = useContext(LanguageContext);
+  const lang: LanguageKeys = language as LanguageKeys;
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -275,7 +301,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           // color={useColorModeValue("gray.600", "gray.200")}
           color={"secondary.800"}
         >
-          {label}
+          {lang == "EN" ? labelEN : lang == "ID" ? labelID : ""}
         </Text>
         {children && (
           <Icon

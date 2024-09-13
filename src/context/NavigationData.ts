@@ -1,45 +1,41 @@
 export interface NavItem {
   label: string;
+  labelEN: string;
+  labelID: string;
   subLabel?: string;
+  subLabelEN?: string;
+  subLabelID?: string;
   children?: Array<NavItem>;
   href?: string;
 }
 
 export const NAV_ITEMS: Array<NavItem> = [
-  // {
-  //   label: "Beranda",
-  //   href: "/",
-  // },
   {
     label: "Produk",
+    labelEN: "Product",
+    labelID: "Produk",
     children: [
       {
         label: "Blank Page",
+        labelEN: "Blank Page",
+        labelID: "Halaman Kosong",
         subLabel: "Example blank page",
-        href: "/blank-page",
-      },
-      {
-        label: "Sub menu 1",
-        subLabel: "Desc sub menu 1",
-        href: "/blank-page",
-      },
-      {
-        label: "Sub menu 2",
-        subLabel: "Desc sub menu 2",
+        subLabelEN: "Example blank page",
+        subLabelID: "Contoh Halaman Kosong",
         href: "/blank-page",
       },
     ],
   },
   {
     label: "Tentang Kami",
-    href: "/blank-page",
+    labelEN: "About Us",
+    labelID: "Tentang Kami",
+    href: "https://www.bankbjb.co.id/page/tentang-bank-bjb",
   },
   {
     label: "Hubungi Kami",
-    href: "/blank-page",
+    labelEN: "Contact Us",
+    labelID: "Hubungi Kami",
+    href: "https://bjbwbs.bankbjb.co.id/",
   },
-  // {
-  //   label: "Blank Page",
-  //   href: "/landing/blank-page",
-  // },
 ];

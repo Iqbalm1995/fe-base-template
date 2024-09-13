@@ -31,6 +31,7 @@ const BreadcrumbAdmin = ({ HeadData }: { HeadData: AdminTittleBreadcrumb }) => {
       height={"60px"}
       color={"secondary.900"}
       flexDirection={{ base: isSmallerThan768 ? "column" : "row" }}
+      w={"full"}
     >
       <Heading as="h3" size="lg">
         {HeadData.titlePage}
