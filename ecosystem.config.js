@@ -25,7 +25,7 @@ module.exports = {
   exportTrailingSlash: true, // Optional: Add trailing slash to all routes
   apps: [
     {
-      name: "template-nextjs-app", // The name of your application
+      name: "portal-frontoffice-app", // The name of your application
       script: "node_modules/next/dist/bin/next", // The path to the Next.js binary
       args: "start", // Arguments to pass to the Next.js binary
       instances: 1, // Run a single instance
